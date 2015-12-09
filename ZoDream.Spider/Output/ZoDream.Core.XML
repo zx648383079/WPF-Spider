@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZoDream.Core</name>
+    </assembly>
+    <members>
+        <member name="T:ZoDream.Core.App">
+            <summary>
+            开始
+            </summary>
+        </member>
+        <member name="T:ZoDream.Core.Export.Txt">
+            <summary>
+            导出txt
+            </summary>
+        </member>
+        <member name="M:ZoDream.Core.Export.Txt.Read(System.String)">
+            <summary>
+            读取文件
+            </summary>
+            <param name="path">路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Core.Export.Txt.Read(System.IO.FileStream)">
+            <summary>
+            读取文件
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Core.Export.Txt.Write(System.String,System.String)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="path">路径</param>
+            <param name="text"></param>
+        </member>
+        <member name="M:ZoDream.Core.Export.Txt.Write(System.IO.FileStream,System.String)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="stream"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:ZoDream.Core.Export.Txt.GetEncoding(System.String)">
+            <summary>
+            获取编码
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Core.Export.Txt.GetEncoding(System.IO.FileStream)">
+            <summary>
+            获取编码
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZoDream.Core.Import.Accepts">
+            <summary>
+            http accepts
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Accepts.Html">
+            <summary>
+            html
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Accepts.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Accepts.Css">
+            <summary>
+            css
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Accepts.Js">
+            <summary>
+            js
+            </summary>
+        </member>
+        <member name="T:ZoDream.Core.Import.FileInfo">
+            <summary>
+            文件信息
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Id">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Name">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Url">
+            <summary>
+            完整网址
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Depth">
+            <summary>
+            目前所处深度
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Path">
+            <summary>
+            保存路径
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Referer">
+            <summary>
+            上一个网址
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Kind">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:ZoDream.Core.Import.FileInfo.Status">
+            <summary>
+            下载状态
+            </summary>
+        </member>
+        <member name="M:ZoDream.Core.Import.FileInfo.GetKind(System.String)">
+            <summary>
+            获取文件格式
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Core.Import.FileInfo.Compare(System.String,System.String)">
+            <summary>
+            判断是否属于
+            </summary>
+            <param name="input">要判断的值</param>
+            <param name="pattern">判断的规则 用 “|” 连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Core.Import.FileInfo.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:ZoDream.Core.Import.FileInfo.#ctor(System.Int32,System.String,System.String,System.Int32,System.String,System.String,System.Nullable{ZoDream.Core.Import.FileKind})">
+            <summary>
+            初始化化
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <param name="url"></param>
+            <param name="depth"></param>
+            <param name="path"></param>
+            <param name="referer"></param>
+            <param name="kind"></param>
+        </member>
+        <member name="T:ZoDream.Core.Import.FileKind">
+            <summary>
+            文件的类型
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.FileKind.Html">
+            <summary>
+            网页
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.FileKind.Js">
+            <summary>
+            js
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.FileKind.Css">
+            <summary>
+            css
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.FileKind.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.FileKind.Video">
+            <summary>
+            视频
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.FileKind.Audio">
+            <summary>
+            音频文件
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.FileKind.File">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="T:ZoDream.Core.Import.Http">
+            <summary>
+            http
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Http.Timeout">
+            <summary>
+            设置超时时间
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Http.Cookies">
+            <summary>
+            cookies
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Http.Referer">
+            <summary>
+            前一个链接
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Http.Accept">
+            <summary>
+            接受
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Http.UserAgent">
+            <summary>
+            代理
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Http.Request">
+            <summary>
+            请求
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.Http.Response">
+            <summary>
+            响应
+            </summary>
+        </member>
+        <member name="M:ZoDream.Core.Import.Http.Get(System.String)">
+            <summary>
+            获取
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Core.Import.Http.Post(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Text.Encoding)">
+            <summary>  
+            创建POST方式的HTTP请求  
+            </summary>  
+            <param name="url">请求的URL</param>  
+            <param name="parameters">随同请求POST的参数名称及参数值字典</param>  
+            <param name="encoding">发送HTTP请求时所用的编码</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:ZoDream.Core.Import.Http.DownloadFile(System.String,System.String)">
+            <summary>
+            Http下载文件
+            </summary>
+        </member>
+        <member name="M:ZoDream.Core.Import.Http.DownloadHtml">
+            <summary>
+            下载html
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Core.Import.Http.GetEncoding(System.Byte[],System.String)">
+            <summary>
+            获取HTML网页的编码
+            </summary>
+            <param name="bytes"></param>
+            <param name="charSet"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZoDream.Core.Import.HttpStatus">
+            <summary>
+            下载状态
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.HttpStatus.NONE">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.HttpStatus.WAITTING">
+            <summary>
+            等待中
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.HttpStatus.USELESS">
+            <summary>
+            用户放弃的
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.HttpStatus.DOWNLOADING">
+            <summary>
+            下载中
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.HttpStatus.COMPLETE">
+            <summary>
+            完成
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.HttpStatus.FAILED">
+            <summary>
+            失败
+            </summary>
+        </member>
+        <member name="T:ZoDream.Core.Import.UserAgents">
+            <summary>
+            user-agent
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Chrome">
+            <summary>
+            chrome
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Firefox">
+            <summary>
+            火狐
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Opera">
+            <summary>
+            opera
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Safari">
+            <summary>
+            safari
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Ie">
+            <summary>
+            ie
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Edge">
+            <summary>
+            edge
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Androd">
+            <summary>
+            安卓
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.Iphone">
+            <summary>
+            苹果
+            </summary>
+        </member>
+        <member name="F:ZoDream.Core.Import.UserAgents.WM">
+            <summary>
+            wp
+            </summary>
+        </member>
+    </members>
+</doc>
