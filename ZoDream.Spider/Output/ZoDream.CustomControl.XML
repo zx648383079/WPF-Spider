@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZoDream.CustomControl</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.CustomControl.ZoWindow" -->
+        <member name="P:ZoDream.CustomControl.ZoWindow.IsShowMax">
+            <summary>  
+            是否显示最大化按钮  
+            </summary>  
+        </member>
+        <member name="P:ZoDream.CustomControl.ZoWindow.BackGroundType">
+            <summary>  
+            背景类型  
+            </summary>  
+        </member>
+        <member name="P:ZoDream.CustomControl.ZoWindow.BackImage">
+            <summary>  
+            背景图片  
+            </summary>  
+        </member>
+        <member name="M:ZoDream.CustomControl.ZoWindow.#ctor">
+            <summary>  
+            窗口  
+            </summary>  
+        </member>
+        <member name="M:ZoDream.CustomControl.ZoWindow.WndProc(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr,System.Boolean@)">
+            <summary>  
+            窗口消息  
+            </summary>  
+            <param name="hwnd"></param>  
+            <param name="msg"></param>  
+            <param name="wParam"></param>  
+            <param name="lParam"></param>  
+            <param name="handled"></param>  
+            <returns></returns>  
+        </member>
+        <member name="T:ZoDream.CustomControl.HitTest">
+            <summary>  
+            包含了鼠标的各种消息  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTERROR">
+            <summary>  
+            HTERROR  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTTRANSPARENT">
+            <summary>  
+            HTTRANSPARENT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTNOWHERE">
+            <summary>  
+            HTNOWHERE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTCLIENT">
+            <summary>  
+            HTCLIENT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTCAPTION">
+            <summary>  
+            HTCAPTION  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTSYSMENU">
+            <summary>  
+            HTSYSMENU  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTGROWBOX">
+            <summary>  
+            HTGROWBOX  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTSIZE">
+            <summary>  
+            HTSIZE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTMENU">
+            <summary>  
+            HTMENU  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTHSCROLL">
+            <summary>  
+            HTHSCROLL  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTVSCROLL">
+            <summary>  
+            HTVSCROLL  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTMINBUTTON">
+            <summary>  
+            HTMINBUTTON  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTMAXBUTTON">
+            <summary>  
+            HTMAXBUTTON  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTLEFT">
+            <summary>  
+            HTLEFT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTRIGHT">
+            <summary>  
+            HTRIGHT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTTOP">
+            <summary>  
+            HTTOP  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTTOPLEFT">
+            <summary>  
+            HTTOPLEFT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTTOPRIGHT">
+            <summary>  
+            HTTOPRIGHT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTBOTTOM">
+            <summary>  
+            HTBOTTOM  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTBOTTOMLEFT">
+            <summary>  
+            HTBOTTOMLEFT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTBOTTOMRIGHT">
+            <summary>  
+            HTBOTTOMRIGHT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTBORDER">
+            <summary>  
+            HTBORDER  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTREDUCE">
+            <summary>  
+            HTREDUCE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTZOOM">
+            <summary>  
+            HTZOOM  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTSIZEFIRST">
+            <summary>  
+            HTSIZEFIRST  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTSIZELAST">
+            <summary>  
+            HTSIZELAST  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTOBJECT">
+            <summary>  
+            HTOBJECT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTCLOSE">
+            <summary>  
+            HTCLOSE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.HitTest.HTHELP">
+            <summary>  
+            HTHELP  
+            </summary>  
+        </member>
+        <member name="T:ZoDream.CustomControl.BackGroundType">
+            <summary>  
+            背景类型  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.BackGroundType.Green">
+            <summary>  
+            绿色调  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.BackGroundType.Blue">
+            <summary>  
+            蓝色调  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.CustomControl.BackGroundType.Image">
+            <summary>  
+            背景图片  
+            </summary>  
+        </member>
+        <member name="T:ZoDream.CustomControl.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ZoDream.CustomControl.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ZoDream.CustomControl.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ZoDream.Spider.Skins">
+    <ControlTemplate x:Key="LeftHeader" TargetType="{x:Type TabControl}">
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel IsItemsHost="True" Grid.Column="0" SnapsToDevicePixels="True">
+                
+            </StackPanel>
+            <ContentPresenter Grid.Column="1" Content="{TemplateBinding SelectedContent}">
+                
+            </ContentPresenter>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

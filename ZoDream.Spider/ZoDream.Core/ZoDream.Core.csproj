@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,17 +43,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionCollection\MainAction.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="Export\Txt.cs" />
-    <Compile Include="Import\Accepts.cs" />
-    <Compile Include="Import\FileInfo.cs" />
-    <Compile Include="Import\FileKind.cs" />
-    <Compile Include="Import\Html.cs" />
-    <Compile Include="Import\Http.cs" />
-    <Compile Include="Import\HttpStatus.cs" />
-    <Compile Include="Import\PatternCollection.cs" />
-    <Compile Include="Import\PatternKind.cs" />
-    <Compile Include="Import\UserAgents.cs" />
+    <Compile Include="Helper\FileAndDirectory\Txt.cs" />
+    <Compile Include="Helper\Data\MySqlHelper.cs" />
+    <Compile Include="Helper\Data\Sql.cs" />
+    <Compile Include="Helper\Data\StringRegex.cs" />
+    <Compile Include="Helper\Data\Validator.cs" />
+    <Compile Include="Helper\FileAndDirectory\Utility.cs" />
+    <Compile Include="Helper\Url\DownLoad.cs" />
+    <Compile Include="Helper\Url\HttpUtil.cs" />
+    <Compile Include="ProviderCollection\HttpProvider.cs" />
+    <Compile Include="InterfaceCollection\IHttpProvider.cs" />
+    <Compile Include="ModelCollection\HttpRequestParameter.cs" />
+    <Compile Include="EnumCollection\Accepts.cs" />
+    <Compile Include="ModelCollection\FileParameter.cs" />
+    <Compile Include="EnumCollection\FileKind.cs" />
+    <Compile Include="Helper\Url\Html.cs" />
+    <Compile Include="EnumCollection\HttpStatus.cs" />
+    <Compile Include="ModelCollection\PatternCollection.cs" />
+    <Compile Include="EnumCollection\PatternKind.cs" />
+    <Compile Include="EnumCollection\UserAgents.cs" />
+    <Compile Include="ModelCollection\HttpCookieType.cs" />
+    <Compile Include="ModelCollection\HttpResponseParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

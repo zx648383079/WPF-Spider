@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZoDream.Core.Import
+namespace ZoDream.Core.EnumCollection
 {
     /// <summary>
     /// user-agent

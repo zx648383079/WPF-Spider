@@ -4,7 +4,8 @@ using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ZoDream.Core.Import;
+using ZoDream.Core.EnumCollection;
+using ZoDream.Core.Helper.Data;
 using ZoDream.Spider.Model;
 
 namespace ZoDream.Spider.ViewModel
@@ -160,6 +161,29 @@ namespace ZoDream.Spider.ViewModel
         }
 
         /// <summary>
+        /// The <see cref="Processes" /> property's name.
+        /// </summary>
+        public const string ProcessesPropertyName = "Processes";
+
+        private int _processes = 0;
+
+        /// <summary>
+        /// Sets and gets the Processes property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public int Processes
+        {
+            get
+            {
+                return _processes;
+            }
+            set
+            {
+                Set(ProcessesPropertyName, ref _processes, value);
+            }
+        }
+
+        /// <summary>
         /// The <see cref="SavePath" /> property's name.
         /// </summary>
         public const string SavePathPropertyName = "SavePath";
@@ -235,6 +259,7 @@ namespace ZoDream.Spider.ViewModel
             this.Url = Settings.Url;
             this.DownLoadMode = Settings.Mode;
             this.Depth = Settings.Depth;
+            this.Processes = Settings.Processes;
             this.SavePath = Settings.Path;
         }
 
@@ -254,15 +279,23 @@ namespace ZoDream.Spider.ViewModel
 
         private void ExecuteSaveCommand()
         {
-            Settings.Url = Url;
-            Settings.Mode = DownLoadMode;
-            Settings.Kind = this._kind;
-            Settings.Depth = Depth;
-            Settings.Path = SavePath;
-            _viewMessage.Execute(true);
+            if (!Validator.IsValidUrl(Url))
+            {
 
-            Messenger.Default.Unregister(this);
-            ViewEnable = false;
+            }
+            else
+            {
+                Settings.Url = Url;
+                Settings.Mode = DownLoadMode;
+                Settings.Kind = this._kind;
+                Settings.Depth = Depth;
+                Settings.Path = SavePath;
+                Settings.Processes = Processes;
+                _viewMessage.Execute(true);
+
+                Messenger.Default.Unregister(this);
+                ViewEnable = false;
+            }
         }
 
         

@@ -32,8 +32,8 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Button Content="新建" Command="{Binding NewCommand}"/>
-            <Button Content="开始/暂停"/>
-            <Button Content="终止"/>
+            <Button Content="开始/暂停" Command="{Binding BeginCommand}"/>
+            <Button Content="终止" Command="{Binding StopCommand}"/>
         </StackPanel>
         <ListView x:Name="FileInfos" Grid.Row="1" ItemsSource="{Binding FileInfos}">
             <i:Interaction.Triggers>
@@ -64,9 +64,9 @@
             <TextBlock Text="{Binding Status,Converter={StaticResource statusConverter}}" Grid.Column="1"/>
             <TextBlock Text="{Binding Message}" Grid.Column="2"/>
             <TextBlock Text="进度：" Grid.Column="3"/>
-            <ProgressBar Value="50" Grid.Column="4">
+            <ProgressBar Value="{Binding Progress}" Grid.Column="4">
                 <ProgressBar.ToolTip>
-                    <ToolTip Content="0/100"/>
+                    <ToolTip Content="{Binding ProgessMessage}"/>
                 </ProgressBar.ToolTip>
             </ProgressBar>
         </Grid>

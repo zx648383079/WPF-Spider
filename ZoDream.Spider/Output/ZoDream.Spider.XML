@@ -129,6 +129,11 @@
             下载深度
             </summary>
         </member>
+        <member name="F:ZoDream.Spider.Model.Settings.Processes">
+            <summary>
+            最大进程数
+            </summary>
+        </member>
         <member name="F:ZoDream.Spider.Model.Settings.Path">
             <summary>
             保存路径 默认我的文档
@@ -175,6 +180,28 @@
             Changes to that property's value raise the PropertyChanged event. 
             </summary>
         </member>
+        <member name="F:ZoDream.Spider.ViewModel.MainViewModel.ProgressPropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.MainViewModel.Progress" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.MainViewModel.Progress">
+            <summary>
+            Sets and gets the Progress property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.ViewModel.MainViewModel.ProgessMessagePropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.MainViewModel.ProgessMessage" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.MainViewModel.ProgessMessage">
+            <summary>
+            Sets and gets the ProgessMessage property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
         <member name="M:ZoDream.Spider.ViewModel.MainViewModel.#ctor">
             <summary>
             Initializes a new instance of the MainViewModel class.
@@ -194,6 +221,16 @@
         <member name="P:ZoDream.Spider.ViewModel.MainViewModel.SelectionCommand">
             <summary>
             Gets the SelectionCommand.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.MainViewModel.BeginCommand">
+            <summary>
+            Gets the BeginCommand.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.MainViewModel.StopCommand">
+            <summary>
+            Gets the StopCommand.
             </summary>
         </member>
         <member name="T:ZoDream.Spider.ViewModel.NewViewModel">
@@ -261,6 +298,17 @@
         <member name="P:ZoDream.Spider.ViewModel.NewViewModel.Depth">
             <summary>
             Sets and gets the Depth property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.ViewModel.NewViewModel.ProcessesPropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.NewViewModel.Processes" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.NewViewModel.Processes">
+            <summary>
+            Sets and gets the Processes property.
             Changes to that property's value raise the PropertyChanged event. 
             </summary>
         </member>
@@ -382,36 +430,6 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>

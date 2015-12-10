@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ZoDream.Core.EnumCollection;
 
-namespace ZoDream.Core.Import
+namespace ZoDream.Core.ModelCollection
 {
     /// <summary>
     /// 文件信息
     /// </summary>
-    public class FileInfo
+    public class FileParameter
     {
         private int _id;
         /// <summary>
@@ -105,6 +106,53 @@ namespace ZoDream.Core.Import
             return new Uri(new Uri(baseUrl), url).ToString();
         }
 
+        /// <summary>
+        /// 获取路径
+        /// </summary>
+        /// <param name="name">名字</param>
+        /// <param name="root">文件路径</param>
+        /// <param name="ext">拓展名</param>
+        /// <returns></returns>
+        public static string GetPath(string name, string root, string ext = "html")
+        {
+            if (!System.IO.Directory.Exists(root))
+            {
+                root = System.IO.Path.GetDirectoryName(root);
+            }
+            return string.Format("{0}\\{1}.{2}", root, name, ext);
+        }
+
+        /// <summary>
+        /// 获取路径
+        /// </summary>
+        /// <param name="url">网址</param>
+        /// <param name="root">文件路径</param>
+        /// <param name="kind">拓展名</param>
+        /// <returns></returns>
+        public static string GetPath(string url, string root, FileKind kind)
+        {
+            if (!System.IO.Directory.Exists(root))
+            {
+                root = System.IO.Path.GetDirectoryName(root);
+            }
+            if (kind == FileKind.Html)
+            {
+                return GetPath(GetName(url), root);
+            }
+            string name = Regex.Match(url, @"\w+?://[\w\.]+?/(?<name>[^\?]+?)\??").Groups["name"].Value;
+            string[] filter = { "/", "\\", ":", "|", "*", "?", "<", ">" };
+            foreach (string item in filter)
+            {
+                name = name.Replace(item, "-");
+            }
+            return string.Format("{0}\\{1}", root + "\\asset", name);
+        }
+
+        /// <summary>
+        /// 获取名
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public static string GetName(string url)
         {
             url = Regex.Replace(url, @"[httpHTTPFTPftpsS]{3,5}://[^/]+/", "");
@@ -164,8 +212,11 @@ namespace ZoDream.Core.Import
             {
                 return FileKind.Audio;
             }
-
-            return FileKind.File;
+            if (Regex.IsMatch(url, @"\.[\w]+\?"))
+            {
+                return FileKind.File;
+            }
+            return FileKind.Html;
         }
 
         /// <summary>
@@ -189,7 +240,7 @@ namespace ZoDream.Core.Import
         /// <summary>
         /// 初始化
         /// </summary>
-        public FileInfo()
+        public FileParameter()
         {
 
         }
@@ -204,7 +255,7 @@ namespace ZoDream.Core.Import
         /// <param name="path"></param>
         /// <param name="referer"></param>
         /// <param name="kind"></param>
-        public FileInfo(int id, string url, string path, int depth = 0, string name = null, string referer = null, FileKind? kind = null)
+        public FileParameter(int id, string url, string path, int depth = 0, string name = null, string referer = null, FileKind? kind = null)
         {
             this.Id = id;
             if (string.IsNullOrWhiteSpace(name))

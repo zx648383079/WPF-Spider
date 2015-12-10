@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZoDream.Core.Import;
+using ZoDream.Core.EnumCollection;
 
 namespace ZoDream.Spider.Model
 {
@@ -31,6 +28,10 @@ namespace ZoDream.Spider.Model
         /// 下载深度
         /// </summary>
         public static int Depth = 0;
+        /// <summary>
+        /// 最大进程数
+        /// </summary>
+        public static int Processes = 0;
 
         /// <summary>
         /// 保存路径 默认我的文档

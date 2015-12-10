@@ -4,40 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZoDream.Core.Import
+namespace ZoDream.Core.EnumCollection
 {
     /// <summary>
-    /// 文件的类型
+    /// 下载状态
     /// </summary>
-    public enum FileKind
+    public enum HttpStatus
     {
         /// <summary>
-        /// 网页
+        /// 无
         /// </summary>
-        Html,
+        NONE,
         /// <summary>
-        /// js
+        /// 等待中
         /// </summary>
-        Js,
+        WAITTING,
         /// <summary>
-        /// css
+        /// 用户放弃的
         /// </summary>
-        Css,
+        USELESS,
         /// <summary>
-        /// 图片
+        /// 下载中
         /// </summary>
-        Image,
+        DOWNLOADING,
         /// <summary>
-        /// 视频
+        /// 完成
         /// </summary>
-        Video,
+        COMPLETE,
         /// <summary>
-        /// 音频文件
+        /// 失败
         /// </summary>
-        Audio,
-        /// <summary>
-        /// 文件
-        /// </summary>
-        File
+        FAILED
     }
 }

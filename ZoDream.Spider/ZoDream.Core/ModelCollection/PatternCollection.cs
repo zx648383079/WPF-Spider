@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZoDream.Core.EnumCollection;
 
-namespace ZoDream.Core.Import
+namespace ZoDream.Core.ModelCollection
 {
     /// <summary>
     /// 匹配的信息
     /// </summary>
-    public class PatternCollection
+    public class PatternParameter
     {
         private string _pattern;
         /// <summary>
@@ -40,6 +41,5 @@ namespace ZoDream.Core.Import
             get { return _kind; }
             set { _kind = value; }
         }
-        ///
     }
 }

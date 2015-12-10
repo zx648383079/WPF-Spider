@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZoDream.Core.Export
+namespace ZoDream.Core.Helper.FileAndDirectory
 {
     /// <summary>
     /// 导出txt
@@ -17,13 +17,12 @@ namespace ZoDream.Core.Export
         /// </summary>
         /// <param name="path">路径</param>
         /// <returns></returns>
-        public string Read(string path)
+        public static string Read(string path)
         {
             if (!File.Exists(path))
             {
                 return null;
             }
-
             FileStream stream = new FileStream(path, FileMode.Open);
             string text = Read(stream);
             stream.Close();
@@ -35,7 +34,7 @@ namespace ZoDream.Core.Export
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        public string Read(FileStream stream)
+        public static string Read(FileStream stream)
         {
             StreamReader reader = new StreamReader(stream, GetEncoding(stream));
             string text = reader.ReadToEnd();
@@ -48,10 +47,10 @@ namespace ZoDream.Core.Export
         /// </summary>
         /// <param name="path">路径</param>
         /// <param name="text"></param>
-        public void Write(string path, string text)
+        public static void Write(string path, string text)
         {
             FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
-            Write(path, text);
+            Write(stream, text);
             stream.Close();
         }
 
@@ -60,7 +59,7 @@ namespace ZoDream.Core.Export
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="text"></param>
-        public void Write(FileStream stream, string text)
+        public static void Write(FileStream stream, string text)
         {
             StreamWriter writer = new StreamWriter(stream, Encoding.UTF8);
             writer.Write(text);
@@ -72,7 +71,7 @@ namespace ZoDream.Core.Export
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public Encoding GetEncoding(string path)
+        public static Encoding GetEncoding(string path)
         {
             if (!File.Exists(path))
             {
@@ -89,7 +88,7 @@ namespace ZoDream.Core.Export
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        public Encoding GetEncoding(FileStream stream)
+        public static Encoding GetEncoding(FileStream stream)
         {
             Encoding targetEncoding = Encoding.Default;
             if (stream != null && stream.Length >= 2)
