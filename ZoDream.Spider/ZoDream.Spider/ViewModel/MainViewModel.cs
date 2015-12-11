@@ -26,7 +26,7 @@ namespace ZoDream.Spider.ViewModel
         /// </summary>
         public const string FileInfosPropertyName = "FileInfos";
 
-        private ObservableCollection<FileParameter> _myProperty = new ObservableCollection<FileParameter>();
+        private ObservableCollection<FileParameter> _fileInfos = new ObservableCollection<FileParameter>();
 
         /// <summary>
         /// Sets and gets the FileInfos property.
@@ -36,11 +36,11 @@ namespace ZoDream.Spider.ViewModel
         {
             get
             {
-                return _myProperty;
+                return _fileInfos;
             }
             set
             {
-                Set(FileInfosPropertyName, ref _myProperty, value);
+                Set(FileInfosPropertyName, ref _fileInfos, value);
             }
         }
 
