@@ -88,6 +88,7 @@
     <Compile Include="Converter\ModeConverter.cs" />
     <Compile Include="Converter\StatusConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Helper\MainTask.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\DownMode.cs" />
@@ -96,6 +97,9 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewView.xaml.cs">
       <DependentUpon>NewView.xaml</DependentUpon>
     </Compile>
@@ -125,6 +129,10 @@
     </Page>
     <Page Include="Skins\TabControl.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutView.xaml">
+      <SubType>Form</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewView.xaml">
