@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZoDream.Theme</name>
+    </assembly>
+    <members>
+        <member name="T:ZoDream.Theme.ThemeManager">
+            <summary>
+            主题管理
+            </summary>
+        </member>
+        <member name="M:ZoDream.Theme.ThemeManager.GetThemeResourceDictionary(System.String)">
+            <summary>
+            获取主题
+            </summary>
+            <param name="theme"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Theme.ThemeManager.GetThemes">
+            <summary>
+            获取主题名字
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Theme.ThemeManager.ApplyTheme(System.Windows.Application,System.String)">
+            <summary>
+            应用主题
+            </summary>
+            <param name="app"></param>
+            <param name="theme"></param>
+        </member>
+        <member name="M:ZoDream.Theme.ThemeManager.ApplyTheme(System.Windows.Controls.ContentControl,System.String)">
+            <summary>
+            应用主题
+            </summary>
+            <param name="control"></param>
+            <param name="theme"></param>
+        </member>
+        <member name="F:ZoDream.Theme.ThemeManager.ThemeProperty">
+            <summary>
+            Theme Attached Dependency Property
+            </summary>
+        </member>
+        <member name="M:ZoDream.Theme.ThemeManager.GetTheme(System.Windows.DependencyObject)">
+            <summary>
+            Gets the Theme property.  This dependency property 
+            indicates ....
+            </summary>
+        </member>
+        <member name="M:ZoDream.Theme.ThemeManager.SetTheme(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Sets the Theme property.  This dependency property 
+            indicates ....
+            </summary>
+        </member>
+        <member name="M:ZoDream.Theme.ThemeManager.OnThemeChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles changes to the Theme property.
+            </summary>
+        </member>
+        <member name="T:ZoDream.Theme.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Theme.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Theme.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

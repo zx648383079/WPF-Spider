@@ -79,6 +79,42 @@
             <param name="culture"></param>
             <returns></returns>
         </member>
+        <member name="T:ZoDream.Spider.Helper.MainTask">
+            <summary>
+            主线程
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.MainTask.Begin(ZoDream.Core.ModelCollection.FileParameter)">
+            <summary>
+            开始
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.MainTask.#ctor(ZoDream.Core.ModelCollection.FileParameter)">
+            <summary>
+            初始化
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.MainTask._down">
+            <summary>
+            下载
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.MainTask._regex">
+            <summary>
+            正则筛选
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.MainTask._getUrl">
+            <summary>
+            提取url
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.MainTask._save">
+            <summary>
+            保存
+            </summary>
+        </member>
         <member name="T:ZoDream.Spider.Model.DownMode">
             <summary>
             下载方式
@@ -360,6 +396,24 @@
         <member name="M:ZoDream.Spider.ViewModel.ViewModelLocator.Cleanup">
             <summary>
             Cleans up all the resources.
+            </summary>
+        </member>
+        <member name="T:ZoDream.Spider.View.AboutView">
+            <summary>
+            Description for AboutView.
+            </summary>
+            <summary>
+            AboutView
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.View.AboutView.#ctor">
+            <summary>
+            Initializes a new instance of the AboutView class.
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.View.AboutView.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
         <member name="T:ZoDream.Spider.View.NewView">

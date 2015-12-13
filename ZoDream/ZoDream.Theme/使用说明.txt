@@ -1,0 +1,24 @@
+﻿.cs
+private void Window_Loaded(object sender, RoutedEventArgs e)
+{
+   themes.ItemsSource = ThemeManager.GetThemes();
+}
+
+private void themes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    if (e.AddedItems.Count > 0)
+    {
+         string theme = e.AddedItems[0].ToString() ;
+
+         // Window Level
+         // this.ApplyTheme(theme);
+
+         // Application Level
+         // Application.Current.ApplyTheme(theme);
+    }
+}
+
+
+.xaml
+themes:ThemeManager.Theme="{Binding ElementName=themes, Path=SelectedItem}"
+Background="{DynamicResource WindowBackgroundBrush}"
