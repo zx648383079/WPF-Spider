@@ -1,0 +1,49 @@
+﻿<Page x:Class="ZoDream.Notepad.Pages.FilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZoDream.Notepad.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="FilePage"
+      DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Skins/FileSkin.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="&#xf15b;" FontSize="100"/>
+            <Button Content="&#xf07c;" FontSize="100" Command="{Binding OpenCommand}"/>
+        </StackPanel>
+        <ListBox Grid.Row="1">
+            <ListBox.Items>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+                <ListBoxItem>11111111</ListBoxItem>
+            </ListBox.Items>
+        </ListBox>
+        <Button Grid.Row="2" Content="&#xf15b;" FontSize="30" Command="{Binding FileCommand}"/>
+    </Grid>
+</Page>

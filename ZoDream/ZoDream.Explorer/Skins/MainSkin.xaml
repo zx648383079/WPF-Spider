@@ -4,9 +4,23 @@
         <Setter Property="SelectionMode" Value="Extended"/>
     </Style>
 
-    <Style TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Content" Value="{Binding Path=Name}"/>
+    <Style TargetType="{x:Type ListBox}">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Name}"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
+    
     <Style TargetType="{x:Type TreeView}">
         <Setter Property="ItemTemplate">
             <Setter.Value>

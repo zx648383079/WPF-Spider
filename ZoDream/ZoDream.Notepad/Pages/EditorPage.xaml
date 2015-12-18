@@ -1,0 +1,69 @@
+﻿<Page x:Class="ZoDream.Notepad.Pages.EditorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ZoDream.Notepad.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="700"
+      Title="EditorPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Skins/EditorSkin.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Visibility="Collapsed" Content="&#xf053;" Style="{DynamicResource DirectButton}"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="HomeButton" Content="&#xf015;" Click="HomeButton_Click"/>
+                <Button Content="&#xf0c7;"/>
+                <Button Content="&#xf0c4;" Command="{StaticResource Cut}" CommandTarget="{Binding ElementName=TextEditor}"/>
+                <Button Content="&#xf0c5;" Command="{StaticResource Copy}" CommandTarget="{Binding ElementName=TextEditor}"/>
+                <Button Content="&#xf0ea;" Command="{StaticResource Paste}" CommandTarget="{Binding ElementName=TextEditor}"/>
+                <Button Content="&#xf112;" Command="{StaticResource Undo}" CommandTarget="{Binding ElementName=TextEditor}"/>
+                <Button Content="&#xf064;" Command="{StaticResource Redo}" CommandTarget="{Binding ElementName=TextEditor}"/>
+                <Button Content="&#xf010;"/>
+                <Button Content="&#xf00e;"/>
+                <Button Content="&#xf002;"/>
+                <Button Content="&#xf013;"/>
+                <Button Content="&#xf059;"/>
+                <Button x:Name="AboutButton" Content="&#xf05a;" Click="AboutButton_Click"/>
+            </StackPanel>
+            <Button Visibility="Collapsed" Content="&#xf054;" Grid.Column="2" Style="{DynamicResource DirectButton}"/>
+        </Grid>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox Style="{DynamicResource RichList}">
+                    <ListBox.Items>
+                        <ListBoxItem>112233</ListBoxItem>
+                    </ListBox.Items>
+                </ListBox>
+                <RichTextBox x:Name="TextEditor" Grid.Column="1" ContextMenu="{DynamicResource RichMenu}"/>
+            </Grid>
+        </ScrollViewer>
+        <Grid Grid.Row="1">
+            
+        </Grid>
+        <Grid Grid.Row="2">
+            
+        </Grid>
+    </Grid>
+</Page>
