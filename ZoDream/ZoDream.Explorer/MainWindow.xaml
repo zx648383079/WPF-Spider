@@ -1,16 +1,16 @@
-﻿<Window
+﻿<Window x:Class="ZoDream.Explorer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="ZoDream.Explorer.MainWindow"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:zodream="clr-namespace:ZoDream.Controls;assembly=ZoDream.Controls"
         mc:Ignorable="d ignore"
         Height="600"
         Width="700"
-        Title="{Binding Title}"
-        >
+        Title="{Binding Title}" >
 
     <Window.Resources>
         <ResourceDictionary>
@@ -30,6 +30,8 @@
             <RowDefinition Height="530*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        
+        <zodream:ZoFileBrowser/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -39,7 +41,7 @@
             <TreeView x:Name="FileTree" ItemsSource="{Binding FileTree}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectedItemChanged">
-                        <mvvm:EventToCommand Command="{Binding SelectedCommand}" CommandParameter="{Binding SelectedItem,ElementName=FileTree}"/>
+                        <mvvm:EventToCommand Command="{Binding SelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=FileTree}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TreeView>
@@ -47,10 +49,10 @@
             <ListBox x:Name="FileList" Grid.Column="2" ItemsSource="{Binding FileList}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <mvvm:EventToCommand Command="{Binding SelectedListCommand}" CommandParameter="{Binding SelectedItems,ElementName=FileList}"/>
+                        <mvvm:EventToCommand Command="{Binding SelectedListCommand}" CommandParameter="{Binding SelectedItems, ElementName=FileList}"/>
                     </i:EventTrigger>
                     <i:EventTrigger EventName="MouseDoubleClick">
-                        <mvvm:EventToCommand Command="{Binding DoubleCommand}" CommandParameter="{Binding SelectedItem,ElementName=FileList}"/>
+                        <mvvm:EventToCommand Command="{Binding DoubleCommand}" CommandParameter="{Binding SelectedItem, ElementName=FileList}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ListBox>

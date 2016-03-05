@@ -1,0 +1,70 @@
+﻿<Window x:Class="ZoDream.Chat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:zodream="clr-namespace:ZoDream.Controls;assembly=ZoDream.Controls"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        Height="600"
+        Width="300"
+        Title="ZoDream Chat"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="124*"/>
+            <RowDefinition Height="21*"/>
+            <RowDefinition Height="395*"/>
+            <RowDefinition Height="29*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="47*"/>
+                <RowDefinition Height="41*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="105*"/>
+                <ColumnDefinition Width="28*"/>
+                <ColumnDefinition Width="159*"/>
+            </Grid.ColumnDefinitions>
+            <Image Name="Photo" Source="pack://siteoforigin:,,,/Image/ico.png" Grid.RowSpan="3"/>
+            <Button Grid.Column="1" Content="@"/>
+            <TextBlock Text="123" Grid.Column="2"/>
+            <TextBlock Text="zzzz" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox />
+            <Button Content="o" Grid.Column="1"/>
+        </Grid>
+        <zodream:ZoAccordion Grid.Row="2">
+            <zodream:ZoAccordionItem Header="123">
+                <ListBox>
+                    <ListBoxItem>1234</ListBoxItem>
+                </ListBox>
+            </zodream:ZoAccordionItem>
+            <zodream:ZoAccordionItem Header="123">
+                <TextBox Text="hhh"/>
+            </zodream:ZoAccordionItem>
+            <zodream:ZoAccordionItem Header="123">
+                <TextBox Text="hhh"/>
+            </zodream:ZoAccordionItem>
+        </zodream:ZoAccordion>
+        <Grid Grid.Row="3">
+            
+        </Grid>
+    </Grid>
+</Window>

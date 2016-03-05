@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZoDream.ControlBrowser</name>
+    </assembly>
+    <members>
+        <member name="T:ZoDream.ControlBrowser.Comparer.TypeComparer">
+            <summary>
+            Type比较器
+            </summary>
+        </member>
+        <member name="M:ZoDream.ControlBrowser.Comparer.TypeComparer.Compare(System.Type,System.Type)">
+            <summary>
+            比较
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZoDream.ControlBrowser.ViewModel.MainViewModel">
+            <summary>
+            This class contains properties that the main View can data bind to.
+            <para>
+            See http://www.mvvmlight.net
+            </para>
+            </summary>
+        </member>
+        <member name="F:ZoDream.ControlBrowser.ViewModel.MainViewModel.ControlsTypePropertyName">
+            <summary>
+            The <see cref="P:ZoDream.ControlBrowser.ViewModel.MainViewModel.ControlsType" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.ControlBrowser.ViewModel.MainViewModel.ControlsType">
+            <summary>
+            Sets and gets the ControlsType property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="F:ZoDream.ControlBrowser.ViewModel.MainViewModel.ControlTextPropertyName">
+            <summary>
+            The <see cref="P:ZoDream.ControlBrowser.ViewModel.MainViewModel.ControlText" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.ControlBrowser.ViewModel.MainViewModel.ControlText">
+            <summary>
+            Sets and gets the ControlText property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="M:ZoDream.ControlBrowser.ViewModel.MainViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the MainViewModel class.
+            </summary>
+        </member>
+        <member name="P:ZoDream.ControlBrowser.ViewModel.MainViewModel.SelectionCommand">
+            <summary>
+            Gets the SelectionCommand.
+            </summary>
+        </member>
+        <member name="T:ZoDream.ControlBrowser.ViewModel.ViewModelLocator">
+            <summary>
+            This class contains static references to all the view models in the
+            application and provides an entry point for the bindings.
+            <para>
+            See http://www.mvvmlight.net
+            </para>
+            </summary>
+        </member>
+        <member name="P:ZoDream.ControlBrowser.ViewModel.ViewModelLocator.Main">
+            <summary>
+            Gets the Main property.
+            </summary>
+        </member>
+        <member name="M:ZoDream.ControlBrowser.ViewModel.ViewModelLocator.Cleanup">
+            <summary>
+            Cleans up all the resources.
+            </summary>
+        </member>
+        <member name="T:ZoDream.ControlBrowser.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:ZoDream.ControlBrowser.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:ZoDream.ControlBrowser.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:ZoDream.ControlBrowser.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:ZoDream.ControlBrowser.MainWindow.#ctor">
+            <summary>
+            Initializes a new instance of the MainWindow class.
+            </summary>
+        </member>
+        <member name="M:ZoDream.ControlBrowser.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ZoDream.ControlBrowser.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:ZoDream.ControlBrowser.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:ZoDream.ControlBrowser.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

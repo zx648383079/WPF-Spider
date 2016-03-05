@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using ZoDream.Core.EnumCollection;
 using ZoDream.Core.Helper.Data;
 using ZoDream.Spider.Model;
+using ZoDream.Spider.View;
 
 namespace ZoDream.Spider.ViewModel
 {
@@ -296,6 +297,44 @@ namespace ZoDream.Spider.ViewModel
                 Messenger.Default.Unregister(this);
                 ViewEnable = false;
             }
+        }
+
+        private RelayCommand _webCommand;
+
+        /// <summary>
+        /// Gets the WebCommand.
+        /// </summary>
+        public RelayCommand WebCommand
+        {
+            get
+            {
+                return _webCommand
+                    ?? (_webCommand = new RelayCommand(ExecuteWebCommand));
+            }
+        }
+
+        private void ExecuteWebCommand()
+        {
+            new WebView().Show();
+        }
+
+        private RelayCommand _testCommand;
+
+        /// <summary>
+        /// Gets the TestCommand.
+        /// </summary>
+        public RelayCommand TestCommand
+        {
+            get
+            {
+                return _testCommand
+                    ?? (_testCommand = new RelayCommand(ExecuteTestCommand));
+            }
+        }
+
+        private void ExecuteTestCommand()
+        {
+            new TestView().Show();
         }
 
         

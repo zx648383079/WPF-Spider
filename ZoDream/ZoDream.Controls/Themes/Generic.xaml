@@ -1,0 +1,18 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoFileBrowser.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoFileBrowserItem.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoWindow.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoTextEditor.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoAccordion.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoAccordionItem.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoGroup.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoGroupList.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoGroupListItem.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoLyrics.xaml"/>
+        <ResourceDictionary Source="/ZoDream.Controls;component/Themes/ZoLyricsItem.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

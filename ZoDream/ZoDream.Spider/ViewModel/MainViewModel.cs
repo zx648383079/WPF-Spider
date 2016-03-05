@@ -245,6 +245,25 @@ namespace ZoDream.Spider.ViewModel
 
         }
 
+        private RelayCommand _aboutCommand;
+
+        /// <summary>
+        /// Gets the AboutCommand.
+        /// </summary>
+        public RelayCommand AboutCommand
+        {
+            get
+            {
+                return _aboutCommand
+                    ?? (_aboutCommand = new RelayCommand(ExecuteAboutCommand));
+            }
+        }
+
+        private void ExecuteAboutCommand()
+        {
+            new AboutView().Show();
+        }
+
 
         ////public override void Cleanup()
         ////{

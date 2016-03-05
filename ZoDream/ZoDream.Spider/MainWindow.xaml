@@ -24,7 +24,44 @@
         <Binding Path="Main" Source="{StaticResource Locator}"/>
     </Window.DataContext>
 
-    <Grid x:Name="LayoutRoot">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="文件">
+                <MenuItem Header="NEW" Command="{Binding NewCommand}"/>
+            </MenuItem>
+            <MenuItem Header="帮助">
+                <MenuItem Header="关于" Command="{Binding AboutCommand}"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox>
+                <ListBox.Items>
+                    <ListBoxItem>1233</ListBoxItem>
+                </ListBox.Items>
+            </ListBox>
+            <GridSplitter Grid.Column="1"/>
+            <ListBox Grid.Column="1">
+                <ListBox.Items>
+                    <ListBoxItem>1233</ListBoxItem>
+                </ListBox.Items>
+            </ListBox>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+
+        </StackPanel>
+    </Grid>
+
+
+    <!--<Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -70,5 +107,5 @@
                 </ProgressBar.ToolTip>
             </ProgressBar>
         </Grid>
-    </Grid>
+    </Grid>-->
 </Window>

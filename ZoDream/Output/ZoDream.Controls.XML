@@ -1,0 +1,476 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZoDream.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:ZoDream.Controls.Model.HitTest">
+            <summary>  
+            包含了鼠标的各种消息  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTERROR">
+            <summary>  
+            HTERROR  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTTRANSPARENT">
+            <summary>  
+            HTTRANSPARENT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTNOWHERE">
+            <summary>  
+            HTNOWHERE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTCLIENT">
+            <summary>  
+            HTCLIENT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTCAPTION">
+            <summary>  
+            HTCAPTION  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTSYSMENU">
+            <summary>  
+            HTSYSMENU  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTGROWBOX">
+            <summary>  
+            HTGROWBOX  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTSIZE">
+            <summary>  
+            HTSIZE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTMENU">
+            <summary>  
+            HTMENU  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTHSCROLL">
+            <summary>  
+            HTHSCROLL  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTVSCROLL">
+            <summary>  
+            HTVSCROLL  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTMINBUTTON">
+            <summary>  
+            HTMINBUTTON  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTMAXBUTTON">
+            <summary>  
+            HTMAXBUTTON  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTLEFT">
+            <summary>  
+            HTLEFT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTRIGHT">
+            <summary>  
+            HTRIGHT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTTOP">
+            <summary>  
+            HTTOP  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTTOPLEFT">
+            <summary>  
+            HTTOPLEFT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTTOPRIGHT">
+            <summary>  
+            HTTOPRIGHT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTBOTTOM">
+            <summary>  
+            HTBOTTOM  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTBOTTOMLEFT">
+            <summary>  
+            HTBOTTOMLEFT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTBOTTOMRIGHT">
+            <summary>  
+            HTBOTTOMRIGHT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTBORDER">
+            <summary>  
+            HTBORDER  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTREDUCE">
+            <summary>  
+            HTREDUCE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTZOOM">
+            <summary>  
+            HTZOOM  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTSIZEFIRST">
+            <summary>  
+            HTSIZEFIRST  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTSIZELAST">
+            <summary>  
+            HTSIZELAST  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTOBJECT">
+            <summary>  
+            HTOBJECT  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTCLOSE">
+            <summary>  
+            HTCLOSE  
+            </summary>  
+        </member>
+        <member name="F:ZoDream.Controls.Model.HitTest.HTHELP">
+            <summary>  
+            HTHELP  
+            </summary>  
+        </member>
+        <member name="T:ZoDream.Controls.Model.LyricsStatus">
+            <summary>
+            歌词的状态
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.Model.LyricsStatus.NONE">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.Model.LyricsStatus.COMMON">
+            <summary>
+            普通
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.Model.LyricsStatus.ANNIMA">
+            <summary>
+            动画
+            </summary>
+        </member>
+        <member name="T:ZoDream.Controls.Model.FileInfo">
+            <summary>
+            文件信息
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.Model.FileInfo.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.Model.FileInfo.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.Model.FileInfo.Kind">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="M:ZoDream.Controls.Model.FileInfo.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:ZoDream.Controls.Model.FileInfo.#ctor(System.String,ZoDream.Controls.Model.FileKind)">
+            <summary>
+            初始化
+            </summary>
+            <param name="path"></param>
+            <param name="kind"></param>
+        </member>
+        <member name="M:ZoDream.Controls.Model.FileInfo.#ctor(System.String,System.String,ZoDream.Controls.Model.FileKind)">
+            <summary>
+            初始化
+            </summary>
+            <param name="name"></param>
+            <param name="path"></param>
+            <param name="kind"></param>
+        </member>
+        <member name="T:ZoDream.Controls.Model.FileKind">
+            <summary>
+            文件的类型
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.Model.FileKind.DIR">
+            <summary>
+            文件夹
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.Model.FileKind.FILE">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoAccordion" -->
+        <member name="P:ZoDream.Controls.ZoAccordion.ExpandedItem">
+            <summary>
+            Gets/Sets which item to expand
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoAccordionItem" -->
+        <member name="E:ZoDream.Controls.ZoAccordionItem.Expanded">
+            <summary>
+            Raised when selected
+            </summary>
+        </member>
+        <member name="E:ZoDream.Controls.ZoAccordionItem.Collapsed">
+            <summary>
+            Raised when unselected
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoAccordionPanel" -->
+        <member name="P:ZoDream.Controls.ZoAccordionPanel.ChildToFill">
+            <summary>
+            Gets/Sets Which child to fill the rest space
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoFileBrowserItem" -->
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoGroup" -->
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoGroupList" -->
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoGroupListItem" -->
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoLyrics" -->
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoLyricsItem" -->
+        <member name="F:ZoDream.Controls.ZoLyricsItem.LyricsProperty">
+            <summary>
+            歌词
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoLyricsItem.StatusProperty">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoLyricsItem.BeginTimeProperty">
+            <summary>
+            当前语句的开始时间
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoLyricsItem.LengthTimeProperty">
+            <summary>
+            当前语句的时间跨度
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoLyricsItem.BeginTime">
+            <summary>
+            当前语句的开始时间
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoLyricsItem.LengthTime">
+            <summary>
+            当前语句的时间跨度
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoLyricsItem.Lyrics">
+            <summary>
+            歌词
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoLyricsItem.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoNotifyIcon" -->
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoTextEditor" -->
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoWindow" -->
+        <member name="F:ZoDream.Controls.ZoWindow.CornerRadiusProperty">
+            <summary>
+            设置圆角属性
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoWindow.ZoBackgroundProperty">
+            <summary>
+            设置背景
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoWindow.ZoMenuProperty">
+            <summary>
+            设置菜单
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoWindow.TitleSizeProperty">
+            <summary>
+            标题栏字体大小
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoWindow.CornerRadius">
+            <summary>
+            圆角
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoWindow.ZoBackground">
+            <summary>
+            背景
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoWindow.ZoMenu">
+            <summary>
+            菜单
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoWindow.TitleSize">
+            <summary>
+            字体大小
+            </summary>
+        </member>
+        <member name="M:ZoDream.Controls.ZoWindow.#ctor">
+            <summary>  
+            窗口  
+            </summary>  
+        </member>
+        <member name="M:ZoDream.Controls.ZoWindow.WndProc(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr,System.Boolean@)">
+            <summary>  
+            窗口消息  
+            </summary>  
+            <param name="hwnd"></param>  
+            <param name="msg"></param>  
+            <param name="wParam"></param>  
+            <param name="lParam"></param>  
+            <param name="handled"></param>  
+            <returns></returns>  
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ZoDream.Controls.ZoFileBrowser" -->
+        <member name="F:ZoDream.Controls.ZoFileBrowser.IsFileProperty">
+            <summary>
+            文件模式或文件夹模式
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoFileBrowser.PathProperty">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoFileBrowser.IsOpenProperty">
+            <summary>
+            是否打开选择器
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoFileBrowser.FileNameProperty">
+            <summary>
+            无扩展名的文件名
+            </summary>
+        </member>
+        <member name="F:ZoDream.Controls.ZoFileBrowser.ExtensionProperty">
+            <summary>
+            拓展名
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoFileBrowser.IsFile">
+            <summary>
+            是文件
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoFileBrowser.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoFileBrowser.IsOpen">
+            <summary>
+            下拉选择框是否打开
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoFileBrowser.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.ZoFileBrowser.Extension">
+            <summary>
+            扩展名 用 ; 分割
+            </summary>
+        </member>
+        <member name="M:ZoDream.Controls.ZoFileBrowser.GetContainerForItemOverride">
+            <summary>
+            准备指定元素以显示指定项。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Controls.ZoFileBrowser.IsItemItsOwnContainerOverride(System.Object)">
+            <summary>
+            如果项是其自己的容器（或可以作为自己的容器），则为 true；否则为 false。
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Controls.ZoFileBrowser.OnApplyTemplate">
+            <summary>
+            应用模板时发生
+            </summary>
+        </member>
+        <member name="T:ZoDream.Controls.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Controls.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

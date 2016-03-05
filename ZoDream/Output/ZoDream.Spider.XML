@@ -79,6 +79,42 @@
             <param name="culture"></param>
             <returns></returns>
         </member>
+        <member name="T:ZoDream.Spider.Helper.Http">
+            <summary>
+            http 处理
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.Http.CheckValidationResult(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            ssl/https请求
+            </summary>
+            <param name="sender"></param>
+            <param name="certificate"></param>
+            <param name="chain"></param>
+            <param name="errors"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.Http._setHeader(System.Net.HttpWebRequest)">
+            <summary>
+            设置请求头
+            </summary>
+            <param name="request">HttpWebRequest对象</param>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.Http._setCookie(System.Net.HttpWebRequest,ZoDream.Core.ModelCollection.HttpCookieType)">
+            <summary>
+            设置请求Cookie
+            </summary>
+            <param name="request">HttpWebRequest对象</param>
+            <param name="cookies">cookies</param>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.Http.Response(System.Net.WebRequest)">
+            <summary>
+            返回响应报文
+            </summary>
+            <param name="request">WebRequest对象</param>
+            <returns>响应对象</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ZoDream.Spider.Helper.Http.GetEncoding(System.Byte[],System.String)" -->
         <member name="T:ZoDream.Spider.Helper.MainTask">
             <summary>
             主线程
@@ -115,6 +151,32 @@
             保存
             </summary>
         </member>
+        <member name="T:ZoDream.Spider.Helper.Url">
+            <summary>
+            url
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.Url.IsUrl(System.String)">
+            <summary>
+            判断是否是URL
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.Url.GetComplete(System.String)">
+            <summary>
+            获取完整的url
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZoDream.Spider.Helper.Url.GetUrlFromHtml(System.String)">
+            <summary>
+            获取url列表
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
         <member name="T:ZoDream.Spider.Model.DownMode">
             <summary>
             下载方式
@@ -139,6 +201,33 @@
             <summary>
             本页
             </summary>
+        </member>
+        <member name="T:ZoDream.Spider.Model.HttpHeader">
+            <summary>
+            http headers
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.Model.HttpHeader.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.Model.HttpHeader.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Model.HttpHeader.#ctor">
+            <summary>
+            无参初始化
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Model.HttpHeader.#ctor(System.String,System.String)">
+            <summary>
+            传参初始化
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
         </member>
         <member name="T:ZoDream.Spider.Model.Settings">
             <summary>
@@ -173,6 +262,107 @@
         <member name="F:ZoDream.Spider.Model.Settings.Path">
             <summary>
             保存路径 默认我的文档
+            </summary>
+        </member>
+        <member name="T:ZoDream.Spider.Model.UrlKinds">
+            <summary>
+            url 类型
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.Model.UrlKinds.HTML">
+            <summary>
+            网页
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.Model.UrlKinds.JS">
+            <summary>
+            js
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.Model.UrlKinds.CSS">
+            <summary>
+            css
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.Model.UrlKinds.FILE">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="T:ZoDream.Spider.Model.DealModes">
+            <summary>
+            处理方式
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.Model.DealModes.GET">
+            <summary>
+            获取
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.Model.DealModes.DOWNLOAD">
+            <summary>
+            下载
+            </summary>
+        </member>
+        <member name="T:ZoDream.Spider.Model.UrlInformation">
+            <summary>
+            一条 url 的信息
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.Model.UrlInformation.Name">
+            <summary>
+            名字 包含拓展名
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.Model.UrlInformation.Url">
+            <summary>
+            url
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.Model.UrlInformation.Kind">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.Model.UrlInformation.Mode">
+            <summary>
+            下载或获取源码
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Model.UrlInformation.#ctor">
+            <summary>
+            无参url
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.Model.UrlInformation.#ctor(System.String,ZoDream.Spider.Model.UrlKinds)">
+            <summary>
+            url信息
+            </summary>
+            <param name="url"></param>
+            <param name="kind"></param>
+        </member>
+        <member name="T:ZoDream.Spider.ViewModel.AboutViewModel">
+            <summary>
+            This class contains properties that a View can data bind to.
+            <para>
+            See http://www.galasoft.ch/mvvm
+            </para>
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.ViewModel.AboutViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the AboutViewModel class.
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.ViewModel.AboutViewModel.MessagePropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.AboutViewModel.Message" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.AboutViewModel.Message">
+            <summary>
+            Sets and gets the Message property.
+            Changes to that property's value raise the PropertyChanged event. 
             </summary>
         </member>
         <member name="T:ZoDream.Spider.ViewModel.MainViewModel">
@@ -267,6 +457,11 @@
         <member name="P:ZoDream.Spider.ViewModel.MainViewModel.StopCommand">
             <summary>
             Gets the StopCommand.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.MainViewModel.AboutCommand">
+            <summary>
+            Gets the AboutCommand.
             </summary>
         </member>
         <member name="T:ZoDream.Spider.ViewModel.NewViewModel">
@@ -374,6 +569,88 @@
             Gets the SaveCommand.
             </summary>
         </member>
+        <member name="P:ZoDream.Spider.ViewModel.NewViewModel.WebCommand">
+            <summary>
+            Gets the WebCommand.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.NewViewModel.TestCommand">
+            <summary>
+            Gets the TestCommand.
+            </summary>
+        </member>
+        <member name="T:ZoDream.Spider.ViewModel.TestViewModel">
+            <summary>
+            This class contains properties that a View can data bind to.
+            <para>
+            See http://www.galasoft.ch/mvvm
+            </para>
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.ViewModel.TestViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the TestViewModel class.
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.ViewModel.TestViewModel.UrlPropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.TestViewModel.Url" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.TestViewModel.Url">
+            <summary>
+            Sets and gets the Url property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.ViewModel.TestViewModel.HtmlCodePropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.TestViewModel.HtmlCode" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.TestViewModel.HtmlCode">
+            <summary>
+            Sets and gets the HtmlCode property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.ViewModel.TestViewModel.ResultCodePropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.TestViewModel.ResultCode" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.TestViewModel.ResultCode">
+            <summary>
+            Sets and gets the ResultCode property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="F:ZoDream.Spider.ViewModel.TestViewModel.UrlsInformationPropertyName">
+            <summary>
+            The <see cref="P:ZoDream.Spider.ViewModel.TestViewModel.UrlsInformation" /> property's name.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.TestViewModel.UrlsInformation">
+            <summary>
+            Sets and gets the UrlsInformation property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.TestViewModel.HtmlCommand">
+            <summary>
+            Gets the HtmlCommand.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.TestViewModel.GetCommand">
+            <summary>
+            Gets the GetCommand.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.TestViewModel.ResultCommand">
+            <summary>
+            Gets the ResultCommand.
+            </summary>
+        </member>
         <member name="T:ZoDream.Spider.ViewModel.ViewModelLocator">
             <summary>
             This class contains static references to all the view models in the
@@ -391,6 +668,16 @@
         <member name="P:ZoDream.Spider.ViewModel.ViewModelLocator.New">
             <summary>
             Gets the New property.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.ViewModelLocator.Test">
+            <summary>
+            Gets the Test property.
+            </summary>
+        </member>
+        <member name="P:ZoDream.Spider.ViewModel.ViewModelLocator.About">
+            <summary>
+            Gets the About property.
             </summary>
         </member>
         <member name="M:ZoDream.Spider.ViewModel.ViewModelLocator.Cleanup">
@@ -430,6 +717,42 @@
             </summary>
         </member>
         <member name="M:ZoDream.Spider.View.NewView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ZoDream.Spider.View.TestView">
+            <summary>
+            Description for OptionView.
+            </summary>
+            <summary>
+            TestView
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.View.TestView.#ctor">
+            <summary>
+            Initializes a new instance of the OptionView class.
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.View.TestView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ZoDream.Spider.View.WebView">
+            <summary>
+            Description for WebView.
+            </summary>
+            <summary>
+            WebView
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.View.WebView.#ctor">
+            <summary>
+            Initializes a new instance of the WebView class.
+            </summary>
+        </member>
+        <member name="M:ZoDream.Spider.View.WebView.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -484,6 +807,36 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

@@ -6,8 +6,9 @@
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Title="关于"
-        DataContext="{Binding ViewModelName, Source={StaticResource Locator}}">
+        DataContext="{Binding About, Source={StaticResource Locator}}">
 
     <Grid>
+        <TextBlock Text="{Binding Message}"/>
     </Grid>
 </Window>

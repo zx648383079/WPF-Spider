@@ -49,44 +49,43 @@ namespace ZoDream.Spider.Model
     /// </summary>
     public class UrlInformation
     {
-        private string _name;
         /// <summary>
         /// 名字 包含拓展名
         /// </summary>
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        public string Name { get; set; }
 
-        private string _url;
         /// <summary>
         /// url
         /// </summary>
-        public string Url
-        {
-            get { return _url; }
-            set { _url = value; }
-        }
+        public string Url { get; set; }
 
-        private UrlKinds _kind;
         /// <summary>
         /// 文件类型
         /// </summary>
-        public UrlKinds Kind
-        {
-            get { return _kind; }
-            set { _kind = value; }
-        }
+        public UrlKinds Kind { get; set; }
 
-        private DealModes _mode;
         /// <summary>
         /// 下载或获取源码
         /// </summary>
-        public DealModes Mode
+        public DealModes Mode { get; set; }
+
+        /// <summary>
+        /// 无参url
+        /// </summary>
+        public UrlInformation()
         {
-            get { return _mode; }
-            set { _mode = value; }
+            
+        }
+
+        /// <summary>
+        /// url信息
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="kind"></param>
+        public UrlInformation(string url, UrlKinds kind)
+        {
+            this.Url = url;
+            this.Kind = kind;
         }
 
     }

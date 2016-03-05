@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
+        Title="新建任务"
         IsEnabled="{Binding ViewEnable,Mode=OneWay}"
         IsEnabledChanged="Window_IsEnabledChanged"
         DataContext="{Binding New, Source={StaticResource Locator}}">
@@ -16,8 +17,139 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="任务名称："/>
+            <TextBox Grid.Row="0" Grid.Column="1"/>
+        </Grid>
+        <TabControl Grid.Row="1">
+            <TabItem Header="初始页">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="名称" Width="100"/>
+                                <GridViewColumn Header="值" Width="500"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox/>
+                        <TextBox Grid.Column="1"/>
+                        <Button Content="ADD" Grid.Column="2"/>
+                        <Button Content="GET" Grid.Column="3" Command="{Binding WebCommand}"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="采集规则" Margin="10,-2,-14,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="下载内容："/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <CheckBox Content="网页" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=0}"/>
+                        <CheckBox Content="js" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=1}"/>
+                        <CheckBox Content="css" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=2}"/>
+                        <CheckBox Content="图片" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=3}"/>
+                        <CheckBox Content="视频" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=4}"/>
+                        <CheckBox Content="音乐" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=5}"/>
+                        <CheckBox Content="文件" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=6}"/>
+                    </StackPanel>
+                    <TextBlock Text="下载深度：" Grid.Row="1"/>
+                    <TextBox Text="{Binding Depth}" Grid.Row="1" Grid.Column="1"/>
+                    <ListView Grid.Row="2" Grid.ColumnSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="操作" Width="100"/>
+                                <GridViewColumn Header="规则" Width="300"/>
+                                <GridViewColumn Header="值" Width="300"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox/>
+                        <TextBox Grid.Column="1"/>
+                        <TextBox Grid.Column="2"/>
+                        <Button Content="ADD" Grid.Column="3"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="导出">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="导出方式："/>
+                    <ComboBox Grid.Column="1"/>
+                    <ListView Grid.Row="1" Grid.ColumnSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="名称" Width="100"/>
+                                <GridViewColumn Header="值" Width="500"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox/>
+                        <TextBox Grid.Column="1"/>
+                        <Button Content="ADD" Grid.Column="2"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <DockPanel Grid.Row="2">
+            <Button Content="默认" DockPanel.Dock="Left" Command="{Binding DefaultCommand}"/>
+            <Button Content="测试" DockPanel.Dock="Left" Command="{Binding TestCommand}"/>
+            <Button Content="确定" DockPanel.Dock="Right"/>
+        </DockPanel>
+    </Grid>
+
+    <!--<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -43,18 +175,6 @@
             <RadioButton Content="单页" IsChecked="{Binding DownLoadMode,Converter={StaticResource modeConverter},ConverterParameter=3}" GroupName="Mode"/>
         </StackPanel>
         
-        <TextBlock Text="下载内容：" Grid.Row="2"/>
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-            <CheckBox Content="网页" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=0}"/>
-            <CheckBox Content="js" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=1}"/>
-            <CheckBox Content="css" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=2}"/>
-            <CheckBox Content="图片" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=3}"/>
-            <CheckBox Content="视频" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=4}"/>
-            <CheckBox Content="音乐" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=5}"/>
-            <CheckBox Content="文件" IsChecked="{Binding Kind,Converter={StaticResource kindConverter},ConverterParameter=6}"/>
-        </StackPanel>
-        <TextBlock Text="下载深度：" Grid.Row="3"/>
-        <TextBox Text="{Binding Depth}" Grid.Row="3" Grid.Column="1"/>
 
         <TextBlock Text="最大进程数：" Grid.Row="4"/>
         <TextBox Text="{Binding Processes}" Grid.Row="4" Grid.Column="1"/>
@@ -70,5 +190,5 @@
         </Grid>
         <Button Content="默认" Grid.Row="7" Command="{Binding DefaultCommand}"/>
         <Button Content="确认" Grid.Row="7" Grid.Column="1" Command="{Binding SaveCommand}"/>
-    </Grid>
+    </Grid>-->
 </Window>

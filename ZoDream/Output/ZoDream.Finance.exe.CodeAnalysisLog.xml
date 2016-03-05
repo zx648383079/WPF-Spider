@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="d:\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="D:\Documents\GitHub\WPF-ZoDream\ZoDream\Output\ZoDream.Finance.exe">
+   <Modules>
+    <Module Name="zodream.finance.exe">
+     <Namespaces>
+      <Namespace Name="ZoDream.Finance.Helper">
+       <Types>
+        <Type Name="SqLiteHelper" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CreateCommand(System.Data.SQLite.SQLiteConnection,System.String,System.Data.SQLite.SQLiteParameter[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="44">传递给 'SqLiteHelper.CreateCommand(SQLiteConnection, string, params SQLiteParameter[])' 中的 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateCommand(System.String,System.String,System.Data.SQLite.SQLiteParameter[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="64">传递给 'SqLiteHelper.CreateCommand(string, string, params SQLiteParameter[])' 中的 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteDataSet(System.Data.SQLite.SQLiteConnection,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="130">传递给 'SqLiteHelper.ExecuteDataSet(SQLiteConnection, string, object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteDataset(System.Data.SQLite.SQLiteTransaction,System.String,System.Data.SQLite.SQLiteParameter[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="177">传递给 'SqLiteHelper.ExecuteDataset(SQLiteTransaction, string, params SQLiteParameter[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteDataset(System.Data.SQLite.SQLiteTransaction,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="202">传递给 'SqLiteHelper.ExecuteDataset(SQLiteTransaction, string, object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteDataSet(System.String,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="102">传递给 'SqLiteHelper.ExecuteDataSet(string, string, object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteNonQuery(System.Data.SQLite.SQLiteConnection,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="301">传递给 'SqLiteHelper.ExecuteNonQuery(SQLiteConnection, string, params object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteNonQuery(System.Data.SQLite.SQLiteTransaction,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="325">传递给 'SqLiteHelper.ExecuteNonQuery(SQLiteTransaction, string, params object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteNonQuery(System.String,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="284">传递给 'SqLiteHelper.ExecuteNonQuery(string, string, params object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteReader(System.Data.SQLite.SQLiteCommand,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="265">传递给 'SqLiteHelper.ExecuteReader(SQLiteCommand, string, object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteScalar(System.String,System.String,System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-01-13 11:36:34Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="D:\Documents\GitHub\WPF-ZoDream\ZoDream\ZoDream.Finance\Helper" File="SqLiteHelper.cs" Line="361">传递给 'SqLiteHelper.ExecuteScalar(string, string, params object[])' 中的 'SQLiteCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'commandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>检查 SQL 查询是否存在安全漏洞</Name>
+   <Description>通过用户输入生成的 SQL 命令字符串容易受到 SQL 注入式攻击。Microsoft SQL Server 和其他数据库服务器支持存储过程和参数化 SQL 查询，这将降低受到注入式攻击的风险。</Description>
+   <Resolution Name="WithNonLiterals">传递给 {1} 中的 {0} 的查询字符串可能包含以下变量 {2}。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">类别</String>
+  <String Key="Certainty">确定性</String>
+  <String Key="CollapseAll">全部折叠</String>
+  <String Key="CheckId">检查 ID</String>
+  <String Key="Error">错误</String>
+  <String Key="Errors">错误</String>
+  <String Key="ExpandAll">全部展开</String>
+  <String Key="Help">帮助</String>
+  <String Key="Line">行</String>
+  <String Key="Messages">消息</String>
+  <String Key="LocationNotStoredInPdb">[位置未存储在 Pdb 中]</String>
+  <String Key="Project">项目</String>
+  <String Key="Resolution">解析</String>
+  <String Key="Rule">规则</String>
+  <String Key="RuleFile">规则文件</String>
+  <String Key="RuleDescription">规则说明</String>
+  <String Key="Source">源</String>
+  <String Key="Status">状态</String>
+  <String Key="Target">目标</String>
+  <String Key="Warning">警告</String>
+  <String Key="Warnings">警告</String>
+  <String Key="ReportTitle">代码分析报告</String>
+ </Localized>
+</FxCopReport>

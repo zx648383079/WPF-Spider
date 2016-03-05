@@ -41,6 +41,10 @@ namespace ZoDream.Spider.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             
             SimpleIoc.Default.Register<NewViewModel>();
+
+            SimpleIoc.Default.Register<TestViewModel>();
+
+            SimpleIoc.Default.Register<AboutViewModel>();
         }
 
         /// <summary>
@@ -69,6 +73,34 @@ namespace ZoDream.Spider.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<NewViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the Test property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public TestViewModel Test
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<TestViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the About property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public AboutViewModel About
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AboutViewModel>();
             }
         }
 

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ZoDream.Spider.Skins"
                     xmlns:converter ="clr-namespace:ZoDream.Spider.Converter">
-    <Style TargetType="{x:Type TextBlock}">
+    <!--<Style TargetType="{x:Type TextBlock}">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="30"/>
@@ -36,7 +36,7 @@
         <Setter Property="MaxWidth" Value="200"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-    </Style>
+    </Style>-->
     
     <converter:ModeConverter x:Key="modeConverter"/>
     <converter:KindConverter x:Key="kindConverter"/>
