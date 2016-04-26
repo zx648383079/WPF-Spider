@@ -50,5 +50,7 @@ namespace ZoDream.Helper.Http
         /// wp
         /// </summary>
         public const string WM = "Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; NOKIA; Nokia 525) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/13.10586";
+
+        public const string WeChat = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255";
     }
 }

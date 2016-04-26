@@ -40,6 +40,7 @@ namespace ZoDream.Helper.Local
             fs.Close();
             return targetEncoding;
         }
+
         /// <summary>   
         /// 取得一个文本文件流的编码方式。   
         /// </summary>   
@@ -51,24 +52,17 @@ namespace ZoDream.Helper.Local
             var targetEncoding = defaultEncoding;
             if (stream == null || stream.Length < 2) return targetEncoding;
             //保存文件流的前4个字节   
-            byte byte1 = 0;
-            byte byte2 = 0;
             byte byte3 = 0;
-            byte byte4 = 0;
             //保存当前Seek位置   
             var origPos = stream.Seek(0, SeekOrigin.Begin);
             stream.Seek(0, SeekOrigin.Begin);
 
             var nByte = stream.ReadByte();
-            byte1 = Convert.ToByte(nByte);
-            byte2 = Convert.ToByte(stream.ReadByte());
+            var byte1 = Convert.ToByte(nByte);
+            var byte2 = Convert.ToByte(stream.ReadByte());
             if (stream.Length >= 3)
             {
                 byte3 = Convert.ToByte(stream.ReadByte());
-            }
-            if (stream.Length >= 4)
-            {
-                byte4 = Convert.ToByte(stream.ReadByte());
             }
             //根据文件流的前4个字节判断Encoding   
             //Unicode {0xFF, 0xFE};   
@@ -78,107 +72,47 @@ namespace ZoDream.Helper.Local
             {
                 targetEncoding = Encoding.BigEndianUnicode;
             }
-            if (byte1 == 0xFF && byte2 == 0xFE && byte3 != 0xFF)//Unicode   
+            else if (byte1 == 0xFF && byte2 == 0xFE && byte3 != 0xFF)//Unicode   
             {
                 targetEncoding = Encoding.Unicode;
             }
-            if (byte1 == 0xEF && byte2 == 0xBB && byte3 == 0xBF)//UTF8   
+            else if (byte1 == 0xEF && byte2 == 0xBB && byte3 == 0xBF) //UTF8   
             {
                 targetEncoding = Encoding.UTF8;
+            }
+            else
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                int read;
+                while ((read = stream.ReadByte()) != -1)
+                {
+                    if (read >= 0xF0)
+                        break;
+                    if (0x80 <= read && read <= 0xBF)
+                        break;
+                    if (0xC0 <= read && read <= 0xDF)
+                    {
+                        read = stream.ReadByte();
+                        if (0x80 <= read && read <= 0xBF)
+                            continue;
+                        break;
+                    }
+                    if (0xE0 > read || read > 0xEF) continue;
+                    read = stream.ReadByte();
+                    if (0x80 <= read && read <= 0xBF)
+                    {
+                        read = stream.ReadByte();
+                        if (0x80 <= read && read <= 0xBF)
+                        {
+                            targetEncoding = Encoding.UTF8;
+                        }
+                    }
+                    break;
+                }
             }
             //恢复Seek位置         
             stream.Seek(origPos, SeekOrigin.Begin);
             return targetEncoding;
-        }
-
-
-
-        // 新增加一个方法，解决了不带BOM的 UTF8 编码问题   
-
-        /// <summary>   
-        /// 通过给定的文件流，判断文件的编码类型   
-        /// </summary>   
-        /// <param name="fs">文件流</param>   
-        /// <returns>文件的编码类型</returns>   
-        public System.Text.Encoding GetEncoding(Stream fs)
-        {
-            var Unicode = new byte[] { 0xFF, 0xFE, 0x41 };
-            var UnicodeBIG = new byte[] { 0xFE, 0xFF, 0x00 };
-            var UTF8 = new byte[] { 0xEF, 0xBB, 0xBF }; //带BOM   
-            var reVal = Encoding.Default;
-
-            var r = new BinaryReader(fs, System.Text.Encoding.Default);
-            var ss = r.ReadBytes(4);
-            if (ss[0] == 0xFE && ss[1] == 0xFF && ss[2] == 0x00)
-            {
-                reVal = Encoding.BigEndianUnicode;
-            }
-            else if (ss[0] == 0xFF && ss[1] == 0xFE && ss[2] == 0x41)
-            {
-                reVal = Encoding.Unicode;
-            }
-            else
-            {
-                if (ss[0] == 0xEF && ss[1] == 0xBB && ss[2] == 0xBF)
-                {
-                    reVal = Encoding.UTF8;
-                }
-                else
-                {
-                    int i;
-                    int.TryParse(fs.Length.ToString(), out i);
-                    ss = r.ReadBytes(i);
-
-                    if (IsUTF8Bytes(ss))
-                        reVal = Encoding.UTF8;
-                }
-            }
-            r.Close();
-            return reVal;
-
-        }
-
-        /// <summary>   
-        /// 判断是否是不带 BOM 的 UTF8 格式   
-        /// </summary>   
-        /// <param name="data"></param>   
-        /// <returns></returns>   
-        private bool IsUTF8Bytes(byte[] data)
-        {
-            var charByteCounter = 1;　 //计算当前正分析的字符应还有的字节数   
-            byte curByte; //当前分析的字节.   
-            for (int i = 0; i < data.Length; i++)
-            {
-                curByte = data[i];
-                if (charByteCounter == 1)
-                {
-                    if (curByte < 0x80) continue;
-                    //判断当前   
-                    while (((curByte <<= 1) & 0x80) != 0)
-                    {
-                        charByteCounter++;
-                    }
-                    //标记位首位若为非0 则至少以2个1开始 如:110XXXXX...........1111110X　   
-                    if (charByteCounter == 1 || charByteCounter > 6)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    //若是UTF-8 此时第一位必须为1   
-                    if ((curByte & 0xC0) != 0x80)
-                    {
-                        return false;
-                    }
-                    charByteCounter--;
-                }
-            }
-            if (charByteCounter > 1)
-            {
-                throw new Exception("非预期的byte格式!");
-            }
-            return true;
         }
     }
 }

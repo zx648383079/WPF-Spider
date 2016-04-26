@@ -64,6 +64,8 @@
     <Compile Include="Converter\ImageConverter.cs" />
     <Compile Include="Converter\VisibilityConverter.cs" />
     <Compile Include="Database\SqLiteHelper.cs" />
+    <Compile Include="FontHelper.cs" />
+    <Compile Include="Local\Csv.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="Http\Accepts.cs" />
     <Compile Include="Http\Html.cs" />

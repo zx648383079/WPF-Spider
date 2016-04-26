@@ -168,15 +168,26 @@ namespace ZoDream.Helper.Local
         }
 
         /// <summary>
-        /// 写文本文件
+        /// 写文本文件 默认使用无bom 的UTF8编码
         /// </summary>
         /// <param name="file"></param>
         /// <param name="content"></param>
         public static void Writer(string file, string content)
         {
-            var writer = new StreamWriter(file, false, Encoding.UTF8);
-            writer.Write(content);
-            writer.Close();
+            Writer(file, content, new UTF8Encoding(false));
+        }
+
+        public static void Writer(string file, string content, string encoding)
+        {
+            Writer(file, content, Encoding.GetEncoding(encoding));
+        }
+
+        public static void Writer(string file, string content, Encoding encoding)
+        {
+            using (var writer = new StreamWriter(file, false, encoding))
+            {
+                writer.Write(content);
+            }
         }
     }
 }

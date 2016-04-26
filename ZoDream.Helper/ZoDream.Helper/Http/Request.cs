@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace ZoDream.Helper.Http
 {
-    internal class Request
+    public class Request
     {
         public string Url { get; set; }
 
@@ -18,7 +18,11 @@ namespace ZoDream.Helper.Http
 
         public string UserAgent { get; set; } = UserAgents.Firefox;
 
+        public string Referer { get; set; } = "";
+
         public string Cookie { get; set; }
+
+        public CookieCollection Cookies { get; set; }
 
         public Request()
         {
@@ -51,6 +55,14 @@ namespace ZoDream.Helper.Http
         }
 
         public string Post(IDictionary<string, string> param)
+        {
+            var request = GetRequest();
+            _post(request, param);
+            _setProperty(request);
+            return GetHtml(request);
+        }
+
+        public string Post(string param)
         {
             var request = GetRequest();
             _post(request, param);
@@ -110,7 +122,7 @@ namespace ZoDream.Helper.Http
             request.Accept = Accept;
             request.KeepAlive = true;
             request.UserAgent = UserAgent;
-            request.Referer = "";
+            request.Referer = Referer;
             request.AllowAutoRedirect = true;
             request.ProtocolVersion = HttpVersion.Version11;
             _setCookie(request);
@@ -128,10 +140,11 @@ namespace ZoDream.Helper.Http
             {
                 request.Headers[HttpRequestHeader.Cookie] = Cookie;
             }
-            //if (cookies != null && cookies.CookieCollection != null && cookies.CookieCollection.Count > 0)
-            //{
-            //    request.CookieContainer.Add(cookies.CookieCollection);
-            //}
+
+            if (Cookies != null && Cookies.Count > 0)
+            {
+                request.CookieContainer.Add(Cookies);
+            }
         }
 
         private void _post(WebRequest request, IDictionary<string, string> param)
@@ -173,6 +186,39 @@ namespace ZoDream.Helper.Http
                 html = GetHtml(response);
             }
             return html;
+        }
+
+        public HttpWebResponse GetResponse(string url)
+        {
+            var request = GetRequest(url);
+            request.Method = "GET";
+            _setProperty(request);
+            return (HttpWebResponse)request.GetResponse();
+        }
+
+
+        public MemoryStream GetMemoryStream(WebResponse response)
+        {
+
+            if (((HttpWebResponse)response).StatusCode != HttpStatusCode.OK) return null;
+            #region 判断解压
+            Stream stream = null;
+            stream = ((HttpWebResponse)response).ContentEncoding.Equals("gzip", StringComparison.InvariantCultureIgnoreCase) ? new GZipStream(response.GetResponseStream(), mode: CompressionMode.Decompress) : response.GetResponseStream();
+            #endregion
+            #region 把网络流转成内存流
+            var ms = new MemoryStream();
+            var buffer = new byte[1024];
+
+            while (true)
+            {
+                if (stream == null) continue;
+                var sz = stream.Read(buffer, 0, 1024);
+                if (sz == 0) break;
+                ms.Write(buffer, 0, sz);
+            }
+            stream.Close();
+            #endregion
+            return ms;
         }
 
         public string GetHtml(WebResponse response)

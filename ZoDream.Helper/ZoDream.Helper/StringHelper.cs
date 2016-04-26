@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
 
@@ -92,5 +89,26 @@ namespace ZoDream.Helper
             return returnColor;
         }
 
+        /// <summary>
+        /// 全角转半角
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ToDbc(string input)
+        {
+            if (input == null) throw new ArgumentNullException(nameof(input));
+            var c = input.ToCharArray();
+            for (var i = 0; i < c.Length; i++)
+            {
+                if (c[i] == 12288)
+                {
+                    c[i] = (char)32;
+                    continue;
+                }
+                if (c[i] > 65280 && c[i] < 65375)
+                    c[i] = (char)(c[i] - 65248);
+            }
+            return new string(c);
+        }
     }
 }
