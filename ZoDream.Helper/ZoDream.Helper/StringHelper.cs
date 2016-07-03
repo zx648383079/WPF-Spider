@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
 
@@ -109,6 +111,197 @@ namespace ZoDream.Helper
                     c[i] = (char)(c[i] - 65248);
             }
             return new string(c);
+        }
+
+        /// <summary>
+        /// 字节转换成16进制字符串
+        /// </summary>
+        /// <param name="buffers"></param>
+        /// <returns></returns>
+        public static string ByteTo16(byte[] buffers)
+        {
+            var sb = new StringBuilder();
+            foreach (var item in buffers)
+            {
+                sb.Append(item.ToString("X2"));
+            }
+            return sb.ToString();
+            // BitConverter.ToString(buffers).Replace("-", "")
+            /*
+             string sHash = "", sTemp = "";
+            for (int counter = 0; counter < args.Length; counter++)
+            {
+                long i = args[counter] / 16;
+                if (i > 9)
+                {
+                    sTemp = ((char)(i - 10 + 0x41)).ToString();
+                }
+                else
+                {
+                    sTemp = ((char)(i + 0x30)).ToString();
+                }
+                i = args[counter] % 16;
+                if (i > 9)
+                {
+                    sTemp += ((char)(i - 10 + 0x41)).ToString();
+                }
+                else
+                {
+                    sTemp += ((char)(i + 0x30)).ToString();
+                }
+                sHash += sTemp;
+            }
+            sHash;
+             */
+        }
+
+        /// <summary>
+        /// 计算32位MD5码
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public static string MD5_32(byte[] args)
+        {
+            try
+            {
+                byte[] buffers;
+                using (var md5 = new MD5CryptoServiceProvider())
+                {
+                    buffers = md5.ComputeHash(args);
+                }
+                return ByteTo16(buffers);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static string MD5_32(string arg)
+        {
+            return MD5_32(Encoding.UTF8.GetBytes(arg));
+        }
+
+        /// <summary>
+        /// 计算16位MD5码
+        /// </summary>
+        /// <param name="arg">字符串</param>
+        /// <returns></returns>
+        public static string MD5_16(string arg)
+        {
+            try
+            {
+                return MD5_32(arg).Substring(8, 16);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 计算16位MD5码
+        /// </summary>
+        /// <param name="args">字符串</param>
+        /// <returns></returns>
+        public static string MD5_16(byte[] args)
+        {
+            try
+            {
+                return MD5_32(args).Substring(8, 16);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static string SHA_1(byte[] args)
+        {
+            try
+            {
+                byte[] buffers;
+                using (var sha1 = new SHA1CryptoServiceProvider())
+                {
+                    buffers = sha1.ComputeHash(args);
+                }
+                return ByteTo16(buffers);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static string SHA_1(string arg)
+        {
+            return SHA_1(Encoding.UTF8.GetBytes(arg));
+        }
+
+        public static string SHA_256(byte[] args)
+        {
+            try
+            {
+                byte[] buffers;
+                using (var sha256 = new SHA256CryptoServiceProvider())
+                {
+                    buffers = sha256.ComputeHash(args);
+                }
+                return ByteTo16(buffers);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static string SHA_256(string arg)
+        {
+            return SHA_256(Encoding.UTF8.GetBytes(arg));
+        }
+
+        public static string SHA_384(byte[] args)
+        {
+            try
+            {
+                byte[] buffers;
+                using (var sha = new SHA384CryptoServiceProvider())
+                {
+                    buffers = sha.ComputeHash(args);
+                }
+                return ByteTo16(buffers);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static string SHA_384(string arg)
+        {
+            return SHA_384(Encoding.UTF8.GetBytes(arg));
+        }
+
+        public static string SHA_512(byte[] args)
+        {
+            try
+            {
+                byte[] buffers;
+                using (var sha = new SHA512CryptoServiceProvider())
+                {
+                    buffers = sha.ComputeHash(args);
+                }
+                return ByteTo16(buffers);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static string SHA_512(string arg)
+        {
+            return SHA_512(Encoding.UTF8.GetBytes(arg));
         }
     }
 }

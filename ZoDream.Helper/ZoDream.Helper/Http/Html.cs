@@ -2,90 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ZoDream.Helper.Base;
 
 namespace ZoDream.Helper.Http
 {
-    public class Html
+    public class Html : Text
     {
-        private string _html;
-
         public Html()
         {
-            
+
         }
 
-        public Html(string html)
+        public Html(string html):base(html)
         {
-            _html = html;
+
         }
 
         public Html SetUrl(string url)
         {
             var request = new Request();
-            _html = request.Get(url);
+            Content = request.Get(url);
             return this;
-        }
-
-        /// <summary>
-        /// 缩小范围
-        /// </summary>
-        /// <param name="pattern"></param>
-        /// <returns></returns>
-        public Html Narrow(string pattern)
-        {
-            _html = Regex.Match(_html, pattern).Value;
-            return this;
-        }
-
-        /// <summary>
-        /// 缩小范围
-        /// </summary>
-        /// <param name="begin"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public Html Narrow(string begin, string end)
-        {
-            return Narrow(begin + @"[\s\S]+?" + end);
-        }
-
-        public bool IsMatch(string pattern)
-        {
-            return Regex.IsMatch(_html, pattern);
-        }
-
-        public Match Match(string pattern)
-        {
-            return Regex.Match(_html, pattern, RegexOptions.IgnoreCase);
-        }
-
-        public MatchCollection Matches(string pattern)
-        {
-            return Regex.Matches(_html, pattern, RegexOptions.IgnoreCase);
-        }
-
-        public string GetMatch(string pattern, string tag)
-        {
-            return Match(pattern).Groups[tag].Value;
-        }
-
-        public string GetMatch(string pattern, int tag)
-        {
-            return Match(pattern).Groups[tag].Value;
-        }
-
-        public string GetCover(string begin, string end)
-        {
-            return GetMatch(begin + @"[\s\S]+?[sS][Rr][Cc][\s]?=[\s""]?(?<src>[^""\<\>\s]+)" + end, "src");
-        }
-
-        public string GetAuthor(string begin, string end)
-        {
-            return ReplaceHtml(GetMatch(begin + @"([\s\S]+?)"+ end, 1));
-        }
-
-        public string GetDescription(string begin, string end)
-        {
-            return ReplaceHtml(GetMatch(begin + @"([\s\S]+?)" + end, 1));
         }
 
         public string ReplaceHtml(string html)
@@ -118,7 +55,7 @@ namespace ZoDream.Helper.Http
             var ms = Regex.Matches(replace, @"([^(=|\|\|)]+)(=([^(=|\|\|)]*))?");
             foreach (Match match in ms)
             {
-                _html = Regex.Replace(_html, match.Groups[1].Value, match.Groups[3].Value, RegexOptions.IgnoreCase);
+                Content = Regex.Replace(Content, match.Groups[1].Value, match.Groups[3].Value, RegexOptions.IgnoreCase);
             }
         }
 
@@ -145,15 +82,7 @@ namespace ZoDream.Helper.Http
             return (from Match item in ms select item.Groups["src"].Value).ToList();
         }
         
-        public MatchCollection GetMatches(string pattern)
-        {
-            return Regex.Matches(_html, pattern);
-        }
-
-        public Match GetMatch(string pattern)
-        {
-            return Regex.Match(_html, pattern);
-        }
+        
 
         /// <summary>
         /// 获取文本
@@ -162,7 +91,7 @@ namespace ZoDream.Helper.Http
         /// <returns></returns>
         public string GetText(string replace = null)
         {  
-            _html = ReplaceHtml(_html);
+            Content = ReplaceHtml(Content);
             //替换掉 < 和 > 标记
             //_html = _html.Replace("<", "");
             //_html = _html.Replace(">", "");
@@ -171,13 +100,13 @@ namespace ZoDream.Helper.Http
                 Replace(replace);
             }
             // 替换被转义的
-            _html = _html.Replace("\\n", "\n");
-            _html = _html.Replace("\\xa1", "\xa1");
-            _html = _html.Replace("\\xa2", "\xa2");
-            _html = _html.Replace("\\xa3", "\xa3");
-            _html = _html.Replace("\\xa9", "\xa9");
+            Content = Content.Replace("\\n", "\n")
+                .Replace("\\xa1", "\xa1")
+                .Replace("\\xa2", "\xa2")
+                .Replace("\\xa3", "\xa3")
+                .Replace("\\xa9", "\xa9");
             //返回去掉_html标记的字符串
-            return _html;
+            return Content;
         }
 
         public bool Comparer(string url, string url2)

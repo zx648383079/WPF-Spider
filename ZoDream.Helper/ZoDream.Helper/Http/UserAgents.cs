@@ -14,7 +14,7 @@ namespace ZoDream.Helper.Http
         /// <summary>
         /// chrome
         /// </summary>
-        public const string Chrome = "Mozilla/5.0 (Windows NT 5.2) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30";
+        public const string Chrome = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36";
         /// <summary>
         /// 火狐
         /// </summary>
@@ -35,7 +35,7 @@ namespace ZoDream.Helper.Http
         /// <summary>
         /// edge
         /// </summary>
-        public const string Edge = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586";
+        public const string Edge = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36 Edge/14.14342";
 
         /// <summary>
         /// 安卓

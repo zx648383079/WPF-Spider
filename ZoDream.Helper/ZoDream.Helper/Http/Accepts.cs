@@ -14,7 +14,7 @@ namespace ZoDream.Helper.Http
         /// <summary>
         /// html
         /// </summary>
-        public const string Html = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+        public const string Html = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
 
         /// <summary>
         /// 图片

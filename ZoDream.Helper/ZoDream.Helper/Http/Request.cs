@@ -22,6 +22,11 @@ namespace ZoDream.Helper.Http
 
         public string Cookie { get; set; }
 
+        /// <summary>
+        /// 毫秒为单位
+        /// </summary>
+        public int TimeOut { get; set; } = 10000;
+
         public CookieCollection Cookies { get; set; }
 
         public Request()
@@ -80,7 +85,7 @@ namespace ZoDream.Helper.Http
 
         private void _setProperty(WebRequest request)
         {
-            request.Timeout = 600000;
+            request.Timeout = TimeOut;
             var headers = new WebHeaderCollection
             {
                 {HttpRequestHeader.AcceptEncoding, "gzip, deflate"},
@@ -88,7 +93,7 @@ namespace ZoDream.Helper.Http
                 {HttpRequestHeader.CacheControl, "max-age=0"}
             };
             request.Headers = headers;
-            _setHeader((HttpWebRequest) request);
+            setHeader((HttpWebRequest) request);
             if (!Regex.IsMatch(Url, "^https://")) return;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             ServicePointManager.ServerCertificateValidationCallback = CheckValidationResult;
@@ -117,7 +122,7 @@ namespace ZoDream.Helper.Http
         /// 设置请求头
         /// </summary>
         /// <param name="request">HttpWebRequest对象</param>
-        private void _setHeader(HttpWebRequest request)
+        protected void setHeader(HttpWebRequest request)
         {
             request.Accept = Accept;
             request.KeepAlive = true;
@@ -125,14 +130,14 @@ namespace ZoDream.Helper.Http
             request.Referer = Referer;
             request.AllowAutoRedirect = true;
             request.ProtocolVersion = HttpVersion.Version11;
-            _setCookie(request);
+            setCookie(request);
         }
 
         /// <summary>
         /// 设置请求Cookie
         /// </summary>
         /// <param name="request">HttpWebRequest对象</param>
-        private void _setCookie(HttpWebRequest request)
+        protected void setCookie(HttpWebRequest request)
         {
             // 必须实例化，否则响应中获取不到Cookie
             request.CookieContainer = new CookieContainer();
