@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ZoDream.Controls">
+    <FontFamily x:Key="FontAwesome">
+        pack://application:,,,/Font/#FontAwesome
+    </FontFamily>
+
+    <LinearGradientBrush x:Key="DefaultBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="Aquamarine" Offset="1"/>
+        <GradientStop Color="AntiqueWhite" Offset="0.5"/>
+        <GradientStop Color="Crimson" Offset="0"/>
+    </LinearGradientBrush>
+
+    <Style x:Key="TitleButton" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="5"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Blue"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="{x:Type local:ZoWindow}">
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="ZoBackground" Value="{StaticResource DefaultBackground}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ZoWindow}">
+                    <Border Name="FussWindowBorder" Background="{TemplateBinding ZoBackground}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Margin="8"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="8" ShadowDepth="0" Color="#00000000"/>
+                        </Border.Effect>
+                        <Border CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Border Height="25" CornerRadius="5">
+                                    <DockPanel Margin="0">
+                                        <Image DockPanel.Dock="Left" Source="{TemplateBinding Icon}" VerticalAlignment="Top" Margin="10 5 0 0" Width="20" Height="20"></Image>
+                                        <TextBlock DockPanel.Dock="Left" FontSize="{TemplateBinding TitleSize}" Text="{TemplateBinding Title}" VerticalAlignment="Top" Margin="2 5 0 0" FontWeight="Bold" Foreground="#101010"/>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" Height="25" VerticalAlignment="Top">
+                                            <Button Name="OptionButton" FontSize="{TemplateBinding TitleSize}" Visibility="Collapsed" Content="&#xf103;" Style="{StaticResource TitleButton}"/>
+                                            <Button Name="MiniButton" FontSize="{TemplateBinding TitleSize}" Content="&#xf068;" Style="{StaticResource TitleButton}"/>
+                                            <Button Name="MaxButton" FontSize="{TemplateBinding TitleSize}" Content="&#xf136;" Style="{StaticResource TitleButton}"/>
+                                            <Button Name="CloseButton" FontSize="{TemplateBinding TitleSize}" Content="&#xf00d;" Style="{StaticResource TitleButton}"/>
+                                        </StackPanel>
+                                    </DockPanel>
+                                </Border>
+                                <AdornerDecorator Grid.Row="1" Height="Auto" Width="Auto">
+                                    <ContentPresenter/>
+                                </AdornerDecorator>
+                            </Grid>
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

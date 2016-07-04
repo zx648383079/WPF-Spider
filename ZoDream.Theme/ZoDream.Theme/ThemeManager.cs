@@ -34,7 +34,10 @@ namespace ZoDream.Theme
         {
             string[] themes = new string[]
             {
-                "Common"
+                "Common",
+                "Bootstrap",
+                "Dark",
+                "Glossy"
             };
             return themes;
         }
