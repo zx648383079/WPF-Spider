@@ -22,6 +22,8 @@ namespace ZoDream.Helper.Http
 
         public bool KeepAlive { get; set; } = true;
 
+        public string Method { get; set; } = "GET";
+
         public bool AllowAutoRedirect { get; set; } = true;
 
         public Version ProtocolVersion { get; set; } = HttpVersion.Version11;
@@ -61,7 +63,7 @@ namespace ZoDream.Helper.Http
         public string Get()
         {
             var request = GetRequest();
-            request.Method = "GET";
+            Method = "GET";
             _setProperty(request);
             return GetHtml(request);
         }
@@ -92,12 +94,12 @@ namespace ZoDream.Helper.Http
         {
             var request = WebRequest.Create(Url);
             request.Credentials = CredentialCache.DefaultCredentials;
-            
             return request;
         }
 
         private void _setProperty(WebRequest request)
         {
+            request.Method = Method;
             SetHeader((HttpWebRequest) request);
             if (!Regex.IsMatch(Url, "^https://")) return;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
@@ -172,9 +174,9 @@ namespace ZoDream.Helper.Http
             _post(request, Encoding.UTF8.GetBytes(args));
         }
 
-        private static void _post(WebRequest request, byte[] args)
+        private void _post(WebRequest request, byte[] args)
         {
-            request.Method = "POST";
+            Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = args.Length;
             var stream = request.GetRequestStream();
@@ -200,7 +202,7 @@ namespace ZoDream.Helper.Http
         public HttpWebResponse GetResponse(string url)
         {
             var request = GetRequest(url);
-            request.Method = "GET";
+            Method = "GET";
             _setProperty(request);
             return (HttpWebResponse)request.GetResponse();
         }
