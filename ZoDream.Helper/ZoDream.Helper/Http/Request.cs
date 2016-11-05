@@ -20,7 +20,18 @@ namespace ZoDream.Helper.Http
 
         public string Referer { get; set; } = "";
 
-        public string Cookie { get; set; }
+        public bool KeepAlive { get; set; } = true;
+
+        public bool AllowAutoRedirect { get; set; } = true;
+
+        public Version ProtocolVersion { get; set; } = HttpVersion.Version11;
+
+        public WebHeaderCollection HeaderCollection { get; set; } = new WebHeaderCollection
+            {
+                {HttpRequestHeader.AcceptEncoding, "gzip, deflate"},
+                {HttpRequestHeader.AcceptLanguage, "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3"},
+                {HttpRequestHeader.CacheControl, "max-age=0"}
+            };
 
         /// <summary>
         /// 毫秒为单位
@@ -79,7 +90,7 @@ namespace ZoDream.Helper.Http
 
         public WebRequest GetRequest()
         {
-            WebRequest request = WebRequest.Create(Url);
+            var request = WebRequest.Create(Url);
             request.Credentials = CredentialCache.DefaultCredentials;
             
             return request;
@@ -87,14 +98,6 @@ namespace ZoDream.Helper.Http
 
         private void _setProperty(WebRequest request)
         {
-            request.Timeout = TimeOut;
-            var headers = new WebHeaderCollection
-            {
-                {HttpRequestHeader.AcceptEncoding, "gzip, deflate"},
-                {HttpRequestHeader.AcceptLanguage, "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3"},
-                {HttpRequestHeader.CacheControl, "max-age=0"}
-            };
-            request.Headers = headers;
             SetHeader((HttpWebRequest) request);
             if (!Regex.IsMatch(Url, "^https://")) return;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
@@ -126,13 +129,15 @@ namespace ZoDream.Helper.Http
         /// <param name="request">HttpWebRequest对象</param>
         protected void SetHeader(HttpWebRequest request)
         {
+            request.Timeout = TimeOut;
             request.ReadWriteTimeout = ReadWriteTimeOut;
             request.Accept = Accept;
-            request.KeepAlive = true;
+            request.KeepAlive = KeepAlive;
             request.UserAgent = UserAgent;
             request.Referer = Referer;
-            request.AllowAutoRedirect = true;
-            request.ProtocolVersion = HttpVersion.Version11;
+            request.AllowAutoRedirect = AllowAutoRedirect;
+            request.ProtocolVersion = ProtocolVersion;
+            request.Headers = HeaderCollection;
             SetCookie(request);
         }
 
@@ -144,10 +149,6 @@ namespace ZoDream.Helper.Http
         {
             // 必须实例化，否则响应中获取不到Cookie
             request.CookieContainer = new CookieContainer();
-            if (!string.IsNullOrEmpty(Cookie))
-            {
-                request.Headers[HttpRequestHeader.Cookie] = Cookie;
-            }
 
             if (Cookies != null && Cookies.Count > 0)
             {
@@ -171,7 +172,7 @@ namespace ZoDream.Helper.Http
             _post(request, Encoding.UTF8.GetBytes(args));
         }
 
-        private void _post(WebRequest request, byte[] args)
+        private static void _post(WebRequest request, byte[] args)
         {
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
