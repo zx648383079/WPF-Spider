@@ -290,7 +290,7 @@ namespace ZoDream.Helper.Http
             var bytes = ms.ToArray();
             html = GetEncoding(bytes, ((HttpWebResponse)response).CharacterSet).GetString(bytes);
             stream.Close();
-
+            response.Close();
             #endregion
             return html;
         }
