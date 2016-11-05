@@ -199,10 +199,16 @@ namespace ZoDream.Helper.Http
             return html;
         }
 
+        public HttpWebResponse GetResponse()
+        {
+            var request = GetRequest();
+            _setProperty(request);
+            return (HttpWebResponse)request.GetResponse();
+        }
+
         public HttpWebResponse GetResponse(string url)
         {
             var request = GetRequest(url);
-            Method = "GET";
             _setProperty(request);
             return (HttpWebResponse)request.GetResponse();
         }
