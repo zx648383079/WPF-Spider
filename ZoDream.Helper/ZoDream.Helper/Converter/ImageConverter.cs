@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace ZoDream.Helper.Converter
 {
@@ -14,11 +8,7 @@ namespace ZoDream.Helper.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (null == value || string.IsNullOrWhiteSpace(value.ToString()))
-            {
-                return "pack://application:,,,/images/default.jpg"; 
-            }
-            return value;
+            return string.IsNullOrWhiteSpace(value?.ToString()) ? "pack://application:,,,/images/default.jpg" : value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

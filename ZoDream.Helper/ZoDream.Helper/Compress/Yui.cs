@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Yahoo.Yui.Compressor;
+﻿using Yahoo.Yui.Compressor;
 
 namespace ZoDream.Helper.Compress
 {
@@ -17,8 +12,7 @@ namespace ZoDream.Helper.Compress
 
         public string Css(string content, bool removeComments = true)
         {
-            CssCompressor compressor = new CssCompressor();
-            compressor.RemoveComments = removeComments;
+            CssCompressor compressor = new CssCompressor {RemoveComments = removeComments};
             return compressor.Compress(content);
         }
     }

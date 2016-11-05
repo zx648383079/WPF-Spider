@@ -10,13 +10,13 @@ namespace ZoDream.Helper
     {
         public static string GetStr(string s, int l, string endStr)
         {
-            string temp = s.Substring(0, (s.Length < l) ? s.Length : l);
+            var temp = s.Substring(0, (s.Length < l) ? s.Length : l);
 
             if (Regex.Replace(temp, "[\u4e00-\u9fa5]", "zz", RegexOptions.IgnoreCase).Length <= l)
             {
                 return temp;
             }
-            for (int i = temp.Length; i >= 0; i--)
+            for (var i = temp.Length; i >= 0; i--)
             {
                 temp = temp.Substring(0, i);
                 if (Regex.Replace(temp, "[\u4e00-\u9fa5]", "zz", RegexOptions.IgnoreCase).Length <= l - endStr.Length)
@@ -29,15 +29,15 @@ namespace ZoDream.Helper
 
         public static string GetStr2(string s, int l, string endStr)
         {
-            string temp = s.Substring(0, (s.Length < l + 1) ? s.Length : l + 1);
-            byte[] encodedBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(temp);
+            var temp = s.Substring(0, (s.Length < l + 1) ? s.Length : l + 1);
+            var encodedBytes = Encoding.ASCII.GetBytes(temp);
 
-            string outputStr = "";
-            int count = 0;
+            var outputStr = "";
+            var count = 0;
 
-            for (int i = 0; i < temp.Length; i++)
+            for (var i = 0; i < temp.Length; i++)
             {
-                if ((int)encodedBytes[i] == 63)
+                if (encodedBytes[i] == 63)
                     count += 2;
                 else
                     count += 1;

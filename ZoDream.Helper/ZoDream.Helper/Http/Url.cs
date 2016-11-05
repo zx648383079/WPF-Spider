@@ -63,7 +63,7 @@ namespace ZoDream.Helper.Http
         public static string UrlEncode(string str)
         {
             var sb = new StringBuilder();
-            var byStr = System.Text.Encoding.UTF8.GetBytes(str); //默认是System.Text.Encoding.Default.GetBytes(str)
+            var byStr = Encoding.UTF8.GetBytes(str); //默认是System.Text.Encoding.Default.GetBytes(str)
             foreach (var t in byStr)
             {
                 sb.Append(@"%" + Convert.ToString(t, 16));

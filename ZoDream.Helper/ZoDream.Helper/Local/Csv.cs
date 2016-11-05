@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ZoDream.Helper.Local
 {
@@ -29,7 +27,7 @@ namespace ZoDream.Helper.Local
 
         public static string GetColumn(string[] args)
         {
-            for (int i = 0; i < args.Length; i++)
+            for (var i = 0; i < args.Length; i++)
             {
                 args[i] = GetString(args[i]);
             }

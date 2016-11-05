@@ -25,7 +25,9 @@ namespace ZoDream.Helper.Http
         /// <summary>
         /// 毫秒为单位
         /// </summary>
-        public int TimeOut { get; set; } = 10000;
+        public int TimeOut { get; set; } = 5 * 1000;
+
+        public int ReadWriteTimeOut = 2 * 1000;
 
         public CookieCollection Cookies { get; set; }
 
@@ -93,7 +95,7 @@ namespace ZoDream.Helper.Http
                 {HttpRequestHeader.CacheControl, "max-age=0"}
             };
             request.Headers = headers;
-            setHeader((HttpWebRequest) request);
+            SetHeader((HttpWebRequest) request);
             if (!Regex.IsMatch(Url, "^https://")) return;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             ServicePointManager.ServerCertificateValidationCallback = CheckValidationResult;
@@ -113,7 +115,7 @@ namespace ZoDream.Helper.Http
         /// <param name="chain"></param>
         /// <param name="errors"></param>
         /// <returns></returns>
-        private bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+        private static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
             return true;
         }
@@ -122,22 +124,23 @@ namespace ZoDream.Helper.Http
         /// 设置请求头
         /// </summary>
         /// <param name="request">HttpWebRequest对象</param>
-        protected void setHeader(HttpWebRequest request)
+        protected void SetHeader(HttpWebRequest request)
         {
+            request.ReadWriteTimeout = ReadWriteTimeOut;
             request.Accept = Accept;
             request.KeepAlive = true;
             request.UserAgent = UserAgent;
             request.Referer = Referer;
             request.AllowAutoRedirect = true;
             request.ProtocolVersion = HttpVersion.Version11;
-            setCookie(request);
+            SetCookie(request);
         }
 
         /// <summary>
         /// 设置请求Cookie
         /// </summary>
         /// <param name="request">HttpWebRequest对象</param>
-        protected void setCookie(HttpWebRequest request)
+        protected void SetCookie(HttpWebRequest request)
         {
             // 必须实例化，否则响应中获取不到Cookie
             request.CookieContainer = new CookieContainer();
@@ -207,8 +210,8 @@ namespace ZoDream.Helper.Http
 
             if (((HttpWebResponse)response).StatusCode != HttpStatusCode.OK) return null;
             #region 判断解压
-            Stream stream = null;
-            stream = ((HttpWebResponse)response).ContentEncoding.Equals("gzip", StringComparison.InvariantCultureIgnoreCase) ? new GZipStream(response.GetResponseStream(), mode: CompressionMode.Decompress) : response.GetResponseStream();
+
+            var stream = GetStream(response);
             #endregion
             #region 把网络流转成内存流
             var ms = new MemoryStream();
@@ -226,14 +229,42 @@ namespace ZoDream.Helper.Http
             return ms;
         }
 
+        public void Download(string url, string file)
+        {
+            var response = GetResponse(url);
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                return;
+            }
+            Download(response, file);
+        }
+
+        public void Download(WebResponse response, string file)
+        {
+            var responseStream = GetStream(response);
+            //创建本地文件写入流
+            var stream = new FileStream(file, FileMode.Create);
+            var bArr = new byte[1024];
+            if (responseStream != null)
+            {
+                var size = responseStream.Read(bArr, 0, bArr.Length);
+                while (size > 0)
+                {
+                    stream.Write(bArr, 0, size);
+                    size = responseStream.Read(bArr, 0, bArr.Length);
+                }
+            }
+            stream.Close();
+            responseStream?.Close();
+        }
+
         public string GetHtml(WebResponse response)
         {
             var html = string.Empty;
             #region 判断解压
 
             if (((HttpWebResponse) response).StatusCode != HttpStatusCode.OK) return html;
-            Stream stream = null;
-            stream = ((HttpWebResponse)response).ContentEncoding.Equals("gzip", StringComparison.InvariantCultureIgnoreCase) ? new GZipStream(response.GetResponseStream(), mode: CompressionMode.Decompress) : response.GetResponseStream();
+            var stream = GetStream(response);
             #region 把网络流转成内存流
             var ms = new MemoryStream();
             var buffer = new byte[1024];
@@ -254,6 +285,18 @@ namespace ZoDream.Helper.Http
             #endregion
             return html;
         }
+
+        /// <summary>
+        /// 获取响应流
+        /// </summary>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        public Stream GetStream(WebResponse response)
+        {
+            return ((HttpWebResponse)response).ContentEncoding.Equals("gzip", StringComparison.InvariantCultureIgnoreCase) ? new GZipStream(response.GetResponseStream(), mode: CompressionMode.Decompress) : response.GetResponseStream();
+        }
+
+
 
         /// <summary>
         /// 获取HTML网页的编码

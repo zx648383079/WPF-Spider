@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ZoDream.Helper.Local
 {
-    class FileHelper
+    public class FileHelper
     {
         public string FileName { get; set; }
 
@@ -22,7 +19,7 @@ namespace ZoDream.Helper.Local
             FileName = file;
         }
 
-        public string GetMD5()
+        public string GetMd5()
         {
             if (!File.Exists(FileName))
             {
@@ -51,7 +48,7 @@ namespace ZoDream.Helper.Local
             }
         }
 
-        public string GetSHA1()
+        public string GetSha1()
         {
             if (!File.Exists(FileName))
             {

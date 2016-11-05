@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ZoDream.Helper.Local
@@ -124,14 +123,12 @@ namespace ZoDream.Helper.Local
             {
                 dir = AppDomain.CurrentDomain.BaseDirectory;
             }
-            FolderBrowserDialog folder = new FolderBrowserDialog();
-            folder.SelectedPath = dir;
-            folder.ShowNewFolderButton = false;
-            if (folder.ShowDialog() == DialogResult.OK)
+            var folder = new FolderBrowserDialog
             {
-                return folder.SelectedPath;
-            }
-            return null;
+                SelectedPath = dir,
+                ShowNewFolderButton = false
+            };
+            return folder.ShowDialog() == DialogResult.OK ? folder.SelectedPath : null;
         }
 
         /// <summary>
@@ -144,8 +141,7 @@ namespace ZoDream.Helper.Local
             var key = Registry.ClassesRoot.OpenSubKey(@"http\shell\open\command\");
             if (key == null) return false;
             var s = key.GetValue("").ToString();
-            string browserpath = null;
-            browserpath = s.StartsWith("\"") ? s.Substring(1, s.IndexOf('\"', 1) - 1) : s.Substring(0, s.IndexOf(" ", StringComparison.Ordinal));
+            var browserpath = s.StartsWith("\"") ? s.Substring(1, s.IndexOf('\"', 1) - 1) : s.Substring(0, s.IndexOf(" ", StringComparison.Ordinal));
             return Process.Start(browserpath, url) != null;
         }
 
@@ -177,6 +173,11 @@ namespace ZoDream.Helper.Local
             Writer(file, content, new UTF8Encoding(false));
         }
 
+        public static void Writer(string file, string content, bool append)
+        {
+            Writer(file, content, new UTF8Encoding(false), append);
+        }
+
         public static void Writer(string file, string content, string encoding)
         {
             Writer(file, content, Encoding.GetEncoding(encoding));
@@ -184,7 +185,12 @@ namespace ZoDream.Helper.Local
 
         public static void Writer(string file, string content, Encoding encoding)
         {
-            using (var writer = new StreamWriter(file, false, encoding))
+            Writer(file, content, encoding, false);
+        }
+
+        public static void Writer(string file, string content, Encoding encoding, bool append)
+        {
+            using (var writer = new StreamWriter(file, append, encoding))
             {
                 writer.Write(content);
             }

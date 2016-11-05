@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ZoDream.Helper.Base
 {
@@ -53,7 +49,7 @@ namespace ZoDream.Helper.Base
         /// <returns></returns>
         public Text Narrow(string begin, string end)
         {
-            var index = Content.IndexOf(begin);
+            var index = Content.IndexOf(begin, StringComparison.Ordinal);
             if (index < 0)
             {
                 index = 0;
@@ -61,7 +57,7 @@ namespace ZoDream.Helper.Base
             {
                 index += begin.Length;
             }
-            var next = Math.Min(Content.IndexOf(end, index), Content.Length - index);
+            var next = Math.Min(Content.IndexOf(end, index, StringComparison.Ordinal), Content.Length - index);
             Content = Content.Substring(index, next);
             return this;
         }

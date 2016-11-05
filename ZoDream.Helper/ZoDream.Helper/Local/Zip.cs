@@ -5,8 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZoDream.Helper.Local
 {
@@ -27,8 +25,8 @@ namespace ZoDream.Helper.Local
             using (var zipoutputstream = new ZipOutputStream(File.Create(zipedFileName)))
             {
                 zipoutputstream.SetLevel(compressionLevel);
-                Crc32 crc = new Crc32();
-                Hashtable fileList = GetAllFies(dirToZip);
+                var crc = new Crc32();
+                var fileList = GetAllFies(dirToZip);
                 foreach (DictionaryEntry item in fileList)
                 {
                     FileStream fs = new FileStream(item.Key.ToString(), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -168,13 +166,15 @@ namespace ZoDream.Helper.Local
         /// <param name="filePath">被压缩的文件名称(包含文件路径)，文件的全路径</param>
         /// <param name="zipedFileName">压缩后的文件名称(包含文件路径)，保存的文件名称</param>
         /// <param name="compressionLevel">压缩率0（无压缩）到 9（压缩率最高）</param>
-        public void ZipFile(string filePath, string zipedFileName, int compressionLevel = 9)
+        public void ZipFile(string filePath, string zipedFileName, int compressionLevel)
         {
             // 如果文件没有找到，则报错 
             if (!File.Exists(filePath))
             {
                 throw new FileNotFoundException("文件：" + filePath + "没有找到！");
             }
+            if (compressionLevel <= 0) throw new ArgumentOutOfRangeException(nameof(compressionLevel));
+            if (compressionLevel <= 0) throw new ArgumentOutOfRangeException(nameof(compressionLevel));
             // 如果压缩后名字为空就默认使用源文件名称作为压缩文件名称
             if (string.IsNullOrEmpty(zipedFileName))
             {
@@ -281,15 +281,7 @@ namespace ZoDream.Helper.Local
                 foreach (string fileOrDir in folderOrFileList)
                 {
                     //是文件夹
-                    if (Directory.Exists(fileOrDir))
-                    {
-                        res = ZipFileDictory(fileOrDir, s, "");
-                    }
-                    else
-                    {
-                        //文件
-                        res = ZipFileWithStream(fileOrDir, s);
-                    }
+                    res = Directory.Exists(fileOrDir) ? ZipFileDictory(fileOrDir, s, "") : ZipFileWithStream(fileOrDir, s);
                 }
                 s.Finish();
                 s.Close();
@@ -334,10 +326,7 @@ namespace ZoDream.Helper.Local
                 {
                 }
 
-                if (zipFile != null)
-                {
-                    zipFile.Close();
-                }
+                zipFile?.Close();
                 GC.Collect();
                 GC.Collect(1);
             }
@@ -351,12 +340,12 @@ namespace ZoDream.Helper.Local
         /// <param name="folderToZip"></param>
         /// <param name="s"></param>
         /// <param name="parentFolderName"></param>
-        private bool ZipFileDictory(string folderToZip, ZipOutputStream s, string parentFolderName)
+        private static bool ZipFileDictory(string folderToZip, ZipOutputStream s, string parentFolderName)
         {
-            bool res = true;
+            var res = true;
             ZipEntry entry = null;
             FileStream fs = null;
-            Crc32 crc = new Crc32();
+            var crc = new Crc32();
             try
             {
                 //创建当前文件夹
@@ -369,11 +358,15 @@ namespace ZoDream.Helper.Local
                 {
                     //打开压缩文件
                     fs = File.OpenRead(file);
-                    byte[] buffer = new byte[fs.Length];
+                    var buffer = new byte[fs.Length];
                     fs.Read(buffer, 0, buffer.Length);
-                    entry = new ZipEntry(Path.Combine(parentFolderName, Path.GetFileName(folderToZip) + "/" + Path.GetFileName(file)));
-                    entry.DateTime = DateTime.Now;
-                    entry.Size = fs.Length;
+                    entry =
+                        new ZipEntry(Path.Combine(parentFolderName,
+                            Path.GetFileName(folderToZip) + "/" + Path.GetFileName(file)))
+                        {
+                            DateTime = DateTime.Now,
+                            Size = fs.Length
+                        };
                     fs.Close();
                     crc.Reset();
                     crc.Update(buffer);
@@ -388,10 +381,7 @@ namespace ZoDream.Helper.Local
             }
             finally
             {
-                if (fs != null)
-                {
-                    fs.Close();
-                }
+                fs?.Close();
                 if (entry != null)
                 {
                 }
@@ -399,14 +389,7 @@ namespace ZoDream.Helper.Local
                 GC.Collect(1);
             }
             var folders = Directory.GetDirectories(folderToZip);
-            foreach (string folder in folders)
-            {
-                if (!ZipFileDictory(folder, s, Path.Combine(parentFolderName, Path.GetFileName(folderToZip))))
-                {
-                    return false;
-                }
-            }
-            return res;
+            return folders.All(folder => ZipFileDictory(folder, s, Path.Combine(parentFolderName, Path.GetFileName(folderToZip)))) && res;
         }
     }
 }
