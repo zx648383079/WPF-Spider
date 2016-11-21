@@ -163,6 +163,12 @@ namespace ZoDream.Helper.Local
             return content;
         }
 
+        public static StreamReader Reader(string file)
+        {
+            var fs = new FileStream(file, FileMode.Open);
+            return new StreamReader(fs, new TxtEncoder().GetEncoding(fs));
+        }
+
         /// <summary>
         /// 写文本文件 默认使用无bom 的UTF8编码
         /// </summary>
