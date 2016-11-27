@@ -7,6 +7,61 @@ namespace ZoDream.Helper.Local
 {
     public class Csv
     {
+        public StreamWriter Writer { get; set; }
+
+        public List<string> Columns { get; set; } = new List<string>();
+
+        public Csv()
+        {
+            
+        }
+
+        public Csv(string file)
+        {
+            var fi = new FileInfo(file);
+            if (fi.Directory != null && !fi.Directory.Exists)
+            {
+                fi.Directory.Create();
+            }
+            Writer = new StreamWriter(file, true, Encoding.UTF8);
+        }
+
+        public Csv(StreamWriter writer)
+        {
+            Writer = writer;
+        }
+
+        public void WriteRow(string row)
+        {
+            Writer.WriteLine(row);
+        }
+
+        public void WriteRow(IList<string> columns)
+        {
+            WriteRow(GetRow(columns));
+        }
+
+        public void WriteRow()
+        {
+            if (Columns.Count < 0)
+            {
+                return;
+            }
+            WriteRow(Columns);
+            Columns.Clear();
+        }
+
+        public void AppendColumn(string column)
+        {
+            Columns.Add(column);
+        }
+
+        public void Close()
+        {
+            WriteRow();
+            Writer.Close();
+        }
+
         /// <summary>
         /// 写入到CSV文件中
         /// </summary>
@@ -25,9 +80,9 @@ namespace ZoDream.Helper.Local
             sw.Close();
         }
 
-        public static string GetColumn(string[] args)
+        public static string GetRow(IList<string> args)
         {
-            for (var i = 0; i < args.Length; i++)
+            for (var i = 0; i < args.Count; i++)
             {
                 args[i] = GetString(args[i]);
             }

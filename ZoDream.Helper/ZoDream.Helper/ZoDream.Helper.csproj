@@ -85,6 +85,12 @@
     <Compile Include="Local\ExcelHelper.cs" />
     <Compile Include="Local\FileHelper.cs" />
     <Compile Include="Local\Zip.cs" />
+    <Compile Include="Security\AesHelper.cs" />
+    <Compile Include="Security\Base64Helper.cs" />
+    <Compile Include="Security\Des3Helper.cs" />
+    <Compile Include="Security\DesHelper.cs" />
+    <Compile Include="Security\RsaHelper.cs" />
+    <Compile Include="Security\ISecurityInterface.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="Http\Accepts.cs" />
     <Compile Include="Http\Html.cs" />

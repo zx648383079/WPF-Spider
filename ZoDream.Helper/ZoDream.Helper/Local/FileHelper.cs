@@ -111,7 +111,7 @@ namespace ZoDream.Helper.Local
             return (cur + path.Substring(i)).Replace(@"\\", @"\");
         }
 
-        public void CreateDirectory(string filefullpath)
+        public static void CreateDirectory(string filefullpath)
         {
             if (File.Exists(filefullpath))
             {
