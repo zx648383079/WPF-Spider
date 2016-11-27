@@ -321,7 +321,6 @@ namespace ZoDream.Helper.Http
             {
                 return Encoding.GetEncoding(regCharset.Match(html).Groups["charset"].Value);
             }
-
             return charSet != string.Empty ? Encoding.GetEncoding(charSet) : Encoding.Default;
         }
     }
